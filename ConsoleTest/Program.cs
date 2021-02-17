@@ -18,7 +18,8 @@ namespace ConsoleTest
         {
             Thread thread = new Thread(PipeReadThread);
             thread.Start();
-            while (true){
+            while (true)
+            {
                 PipeWrite(Console.ReadLine());
             }
         }
@@ -26,22 +27,28 @@ namespace ConsoleTest
         {
             NamedPipeServerStream pipeServiceRead = new NamedPipeServerStream("pipeAntivirusServiceRead", PipeDirection.InOut, 1);
 
-            try
-            {
-                StreamString ss = new StreamString(pipeServiceRead);
-                while (true)
-                {
-                    if (!pipeServiceRead.IsConnected) pipeServiceRead.WaitForConnection();
-                    var text = ss.ReadString();
-                    Console.WriteLine(text);
-                    Command command = new Command(text);
-                    Console.WriteLine(command.ToString());
-                }
 
+            StreamString ss = new StreamString(pipeServiceRead);
+            while (true)
+            {
+                if (!pipeServiceRead.IsConnected)
+                {
+                    Console.WriteLine("Wait");
+                    pipeServiceRead.WaitForConnection();
+                    Console.WriteLine("Connected");
+
+                }
+                var text = ss.ReadString();
+                if (text == "error")
+                {
+                    pipeServiceRead.Disconnect();
+                    continue;
+                }
+                Console.WriteLine(text);
+                Command command = new Command(text);
+                Console.WriteLine(command.ToString());
             }
-            catch (IOException e)
-            { 
-            }
+
             pipeServiceRead.Close();
         }
 
@@ -66,19 +73,22 @@ namespace ConsoleTest
         public Command(string text)
         {
             var array = text.Split('|');
-            foreach(var str in array)
+            foreach (var str in array)
             {
-                switch (str[0]){
+                switch (str[0])
+                {
                     case 'N':
-                        byte.TryParse(str.Substring(1, str.Length-1), out numberCommand);
+                        byte.TryParse(str.Substring(1, str.Length - 1), out numberCommand);
                         break;
                     case 'P':
-                        paths.Add(str.Substring(1, str.Length-1));
+                        paths.Add(str.Substring(1, str.Length - 1));
                         break;
                     case 'O':
                         switch (str[1])
                         {
                             case 'a': option.a = true; break;
+                            case 'b': option.b = true; break;
+                            case 'c': option.c = true; break;
                         }
                         break;
                 }
@@ -88,8 +98,8 @@ namespace ConsoleTest
         public override string ToString()
         {
             string str;
-            str = "NumberCommand " + numberCommand+"\r\n";
-            foreach(var path in paths)
+            str = "NumberCommand " + numberCommand + "\r\n";
+            foreach (var path in paths)
             {
                 str += path + "\r\n";
             }
@@ -100,11 +110,15 @@ namespace ConsoleTest
         public struct Option
         {
             public bool a;
+            public bool b;
+            public bool c;
 
             public override string ToString()
             {
                 string str = "Option:";
                 if (a) str += "a";
+                if (b) str += "b";
+                if (c) str += "c";
                 return str;
             }
         }
@@ -123,14 +137,21 @@ namespace ConsoleTest
 
         public string ReadString()
         {
-            int len = 0;
+            try
+            {
+                int len = 0;
 
-            len = ioStream.ReadByte() * 256;
-            len += ioStream.ReadByte();
-            byte[] inBuffer = new byte[len];
-            ioStream.Read(inBuffer, 0, len);
+                len = ioStream.ReadByte() * 256;
+                len += ioStream.ReadByte();
+                byte[] inBuffer = new byte[len];
+                ioStream.Read(inBuffer, 0, len);
 
-            return streamEncoding.GetString(inBuffer);
+                return streamEncoding.GetString(inBuffer);
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public int WriteString(string outString)

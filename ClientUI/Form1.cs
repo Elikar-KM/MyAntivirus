@@ -25,7 +25,12 @@ namespace ClientUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PipeWrite(textBox1.Text);
+            string str = "N";
+            str += numericUpDown1.Value + "|P" + textBox1.Text;
+            if (checkBox1.Checked) str += "|Oa";
+            if (checkBox2.Checked) str += "|Ob";
+            if (checkBox3.Checked) str += "|Oc";
+            PipeWrite(str);
         }
 
         public void PipeReadThread()
@@ -38,6 +43,7 @@ namespace ClientUI
                 while (true)
                 {
                     var text = ss.ReadString();
+                    if (text == "error") continue;
                     label1.Invoke(new Action(() => label1.Text = text));
                 }
             }
@@ -59,6 +65,12 @@ namespace ClientUI
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (pipeWrite != null)
+            {
+                
+                pipeWrite.Dispose();
+                //pipeWrite.Close();
+            }
             pipeReadThread.Abort();
         }
     }
@@ -76,14 +88,21 @@ namespace ClientUI
 
         public string ReadString()
         {
-            int len = 0;
+            try
+            {
+                int len = 0;
 
-            len = ioStream.ReadByte() * 256;
-            len += ioStream.ReadByte();
-            byte[] inBuffer = new byte[len];
-            ioStream.Read(inBuffer, 0, len);
+                len = ioStream.ReadByte() * 256;
+                len += ioStream.ReadByte();
+                byte[] inBuffer = new byte[len];
+                ioStream.Read(inBuffer, 0, len);
 
-            return streamEncoding.GetString(inBuffer);
+                return streamEncoding.GetString(inBuffer);
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public int WriteString(string outString)
