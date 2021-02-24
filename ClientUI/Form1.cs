@@ -66,10 +66,8 @@ namespace ClientUI
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (pipeWrite != null)
-            {
-                
+            {            
                 pipeWrite.Dispose();
-                //pipeWrite.Close();
             }
             pipeReadThread.Abort();
         }
