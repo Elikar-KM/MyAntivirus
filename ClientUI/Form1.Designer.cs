@@ -44,6 +44,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pSearch = new System.Windows.Forms.Panel();
             this.pMonitoring = new System.Windows.Forms.Panel();
+            this.pEditAddMon = new System.Windows.Forms.Panel();
+            this.bSaveEditAddMon = new System.Windows.Forms.Button();
+            this.bCloseEditAddMon = new System.Windows.Forms.Button();
+            this.rdEditAddMon = new System.Windows.Forms.RadioButton();
+            this.rqEditAddMon = new System.Windows.Forms.RadioButton();
+            this.tEditAddMon = new System.Windows.Forms.TextBox();
+            this.lEditAddMon = new System.Windows.Forms.Label();
             this.addMonitoring = new System.Windows.Forms.Button();
             this.editMonitoring = new System.Windows.Forms.Button();
             this.selectAllElementMonitoring = new System.Windows.Forms.Button();
@@ -51,6 +58,13 @@
             this.flowPanelMonitoring = new System.Windows.Forms.FlowLayoutPanel();
             this.titleMonitor = new System.Windows.Forms.Label();
             this.pQuarantine = new System.Windows.Forms.Panel();
+            this.bQRemove = new System.Windows.Forms.Button();
+            this.bQRecavery = new System.Windows.Forms.Button();
+            this.lQTitleType = new System.Windows.Forms.Label();
+            this.lQTitleFile = new System.Windows.Forms.Label();
+            this.lQTitleDate = new System.Windows.Forms.Label();
+            this.flowQuarantinePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.TitleQuarantine = new System.Windows.Forms.Label();
             this.pReport = new System.Windows.Forms.Panel();
             this.lTitleReportVirus = new System.Windows.Forms.Label();
             this.lTitleReportCountFile = new System.Windows.Forms.Label();
@@ -58,30 +72,16 @@
             this.lTitleReportDateEnd = new System.Windows.Forms.Label();
             this.lTitleReportDateStart = new System.Windows.Forms.Label();
             this.flowReportPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.pReportElem = new System.Windows.Forms.Panel();
-            this.tReportDir = new System.Windows.Forms.TextBox();
-            this.lReportVirus = new System.Windows.Forms.Label();
-            this.lReportCountFile = new System.Windows.Forms.Label();
-            this.lReportDateEnd = new System.Windows.Forms.Label();
-            this.lReportDateStart = new System.Windows.Forms.Label();
             this.TitleReport = new System.Windows.Forms.Label();
             this.pUpdate = new System.Windows.Forms.Panel();
-            this.pEditAddMon = new System.Windows.Forms.Panel();
-            this.lEditAddMon = new System.Windows.Forms.Label();
-            this.tEditAddMon = new System.Windows.Forms.TextBox();
-            this.rqEditAddMon = new System.Windows.Forms.RadioButton();
-            this.rdEditAddMon = new System.Windows.Forms.RadioButton();
-            this.bCloseEditAddMon = new System.Windows.Forms.Button();
-            this.bSaveEditAddMon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pSearch.SuspendLayout();
             this.pMonitoring.SuspendLayout();
-            this.pReport.SuspendLayout();
-            this.flowReportPanel.SuspendLayout();
-            this.pReportElem.SuspendLayout();
             this.pEditAddMon.SuspendLayout();
+            this.pQuarantine.SuspendLayout();
+            this.pReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -290,11 +290,94 @@
             this.pMonitoring.Controls.Add(this.removeMonitoring);
             this.pMonitoring.Controls.Add(this.flowPanelMonitoring);
             this.pMonitoring.Controls.Add(this.titleMonitor);
-            this.pMonitoring.Location = new System.Drawing.Point(1123, 33);
+            this.pMonitoring.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pMonitoring.Location = new System.Drawing.Point(0, 0);
             this.pMonitoring.Name = "pMonitoring";
-            this.pMonitoring.Size = new System.Drawing.Size(57, 47);
+            this.pMonitoring.Size = new System.Drawing.Size(924, 407);
             this.pMonitoring.TabIndex = 10;
             this.pMonitoring.Visible = false;
+            // 
+            // pEditAddMon
+            // 
+            this.pEditAddMon.Controls.Add(this.bSaveEditAddMon);
+            this.pEditAddMon.Controls.Add(this.bCloseEditAddMon);
+            this.pEditAddMon.Controls.Add(this.rdEditAddMon);
+            this.pEditAddMon.Controls.Add(this.rqEditAddMon);
+            this.pEditAddMon.Controls.Add(this.tEditAddMon);
+            this.pEditAddMon.Controls.Add(this.lEditAddMon);
+            this.pEditAddMon.Location = new System.Drawing.Point(146, 86);
+            this.pEditAddMon.Name = "pEditAddMon";
+            this.pEditAddMon.Size = new System.Drawing.Size(630, 307);
+            this.pEditAddMon.TabIndex = 5;
+            this.pEditAddMon.Visible = false;
+            // 
+            // bSaveEditAddMon
+            // 
+            this.bSaveEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bSaveEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.bSaveEditAddMon.Location = new System.Drawing.Point(369, 234);
+            this.bSaveEditAddMon.Name = "bSaveEditAddMon";
+            this.bSaveEditAddMon.Size = new System.Drawing.Size(120, 49);
+            this.bSaveEditAddMon.TabIndex = 5;
+            this.bSaveEditAddMon.Text = "Сохранить";
+            this.bSaveEditAddMon.UseVisualStyleBackColor = true;
+            this.bSaveEditAddMon.Click += new System.EventHandler(this.bSaveEditAddMon_Click);
+            // 
+            // bCloseEditAddMon
+            // 
+            this.bCloseEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bCloseEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.bCloseEditAddMon.Location = new System.Drawing.Point(137, 234);
+            this.bCloseEditAddMon.Name = "bCloseEditAddMon";
+            this.bCloseEditAddMon.Size = new System.Drawing.Size(120, 49);
+            this.bCloseEditAddMon.TabIndex = 4;
+            this.bCloseEditAddMon.Text = "Отмена";
+            this.bCloseEditAddMon.UseVisualStyleBackColor = true;
+            this.bCloseEditAddMon.Click += new System.EventHandler(this.bCloseEditAddMon_Click);
+            // 
+            // rdEditAddMon
+            // 
+            this.rdEditAddMon.AutoSize = true;
+            this.rdEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rdEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.rdEditAddMon.Location = new System.Drawing.Point(82, 142);
+            this.rdEditAddMon.Name = "rdEditAddMon";
+            this.rdEditAddMon.Size = new System.Drawing.Size(81, 25);
+            this.rdEditAddMon.TabIndex = 3;
+            this.rdEditAddMon.TabStop = true;
+            this.rdEditAddMon.Text = "Удалять";
+            this.rdEditAddMon.UseVisualStyleBackColor = true;
+            // 
+            // rqEditAddMon
+            // 
+            this.rqEditAddMon.AutoSize = true;
+            this.rqEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rqEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.rqEditAddMon.Location = new System.Drawing.Point(82, 98);
+            this.rqEditAddMon.Name = "rqEditAddMon";
+            this.rqEditAddMon.Size = new System.Drawing.Size(179, 25);
+            this.rqEditAddMon.TabIndex = 2;
+            this.rqEditAddMon.TabStop = true;
+            this.rqEditAddMon.Text = "Помещать в карантин";
+            this.rqEditAddMon.UseVisualStyleBackColor = true;
+            // 
+            // tEditAddMon
+            // 
+            this.tEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.tEditAddMon.Location = new System.Drawing.Point(82, 34);
+            this.tEditAddMon.Name = "tEditAddMon";
+            this.tEditAddMon.Size = new System.Drawing.Size(487, 29);
+            this.tEditAddMon.TabIndex = 1;
+            // 
+            // lEditAddMon
+            // 
+            this.lEditAddMon.AutoSize = true;
+            this.lEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.lEditAddMon.Location = new System.Drawing.Point(20, 38);
+            this.lEditAddMon.Name = "lEditAddMon";
+            this.lEditAddMon.Size = new System.Drawing.Size(45, 21);
+            this.lEditAddMon.TabIndex = 0;
+            this.lEditAddMon.Text = "Путь:";
             // 
             // addMonitoring
             // 
@@ -363,11 +446,91 @@
             // pQuarantine
             // 
             this.pQuarantine.BackColor = System.Drawing.Color.LightCyan;
-            this.pQuarantine.Location = new System.Drawing.Point(1118, 111);
+            this.pQuarantine.Controls.Add(this.bQRemove);
+            this.pQuarantine.Controls.Add(this.bQRecavery);
+            this.pQuarantine.Controls.Add(this.lQTitleType);
+            this.pQuarantine.Controls.Add(this.lQTitleFile);
+            this.pQuarantine.Controls.Add(this.lQTitleDate);
+            this.pQuarantine.Controls.Add(this.flowQuarantinePanel);
+            this.pQuarantine.Controls.Add(this.TitleQuarantine);
+            this.pQuarantine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pQuarantine.Location = new System.Drawing.Point(0, 0);
             this.pQuarantine.Name = "pQuarantine";
-            this.pQuarantine.Size = new System.Drawing.Size(62, 42);
+            this.pQuarantine.Size = new System.Drawing.Size(924, 407);
             this.pQuarantine.TabIndex = 11;
             this.pQuarantine.Visible = false;
+            // 
+            // bQRemove
+            // 
+            this.bQRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bQRemove.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            this.bQRemove.Location = new System.Drawing.Point(515, 353);
+            this.bQRemove.Name = "bQRemove";
+            this.bQRemove.Size = new System.Drawing.Size(112, 35);
+            this.bQRemove.TabIndex = 4;
+            this.bQRemove.Text = "Удалить";
+            this.bQRemove.UseVisualStyleBackColor = true;
+            // 
+            // bQRecavery
+            // 
+            this.bQRecavery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bQRecavery.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            this.bQRecavery.Location = new System.Drawing.Point(291, 353);
+            this.bQRecavery.Name = "bQRecavery";
+            this.bQRecavery.Size = new System.Drawing.Size(112, 35);
+            this.bQRecavery.TabIndex = 0;
+            this.bQRecavery.Text = "Восстановить";
+            this.bQRecavery.UseVisualStyleBackColor = true;
+            // 
+            // lQTitleType
+            // 
+            this.lQTitleType.AutoSize = true;
+            this.lQTitleType.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            this.lQTitleType.Location = new System.Drawing.Point(651, 110);
+            this.lQTitleType.Name = "lQTitleType";
+            this.lQTitleType.Size = new System.Drawing.Size(66, 15);
+            this.lQTitleType.TabIndex = 6;
+            this.lQTitleType.Text = "Тип вируса";
+            // 
+            // lQTitleFile
+            // 
+            this.lQTitleFile.AutoSize = true;
+            this.lQTitleFile.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            this.lQTitleFile.Location = new System.Drawing.Point(256, 110);
+            this.lQTitleFile.Name = "lQTitleFile";
+            this.lQTitleFile.Size = new System.Drawing.Size(73, 15);
+            this.lQTitleFile.TabIndex = 5;
+            this.lQTitleFile.Text = "Путь к файлу";
+            // 
+            // lQTitleDate
+            // 
+            this.lQTitleDate.AutoSize = true;
+            this.lQTitleDate.Font = new System.Drawing.Font("Segoe UI Light", 9F);
+            this.lQTitleDate.Location = new System.Drawing.Point(100, 110);
+            this.lQTitleDate.Name = "lQTitleDate";
+            this.lQTitleDate.Size = new System.Drawing.Size(150, 15);
+            this.lQTitleDate.TabIndex = 4;
+            this.lQTitleDate.Text = "Дата занесения в карантин";
+            // 
+            // flowQuarantinePanel
+            // 
+            this.flowQuarantinePanel.AutoScroll = true;
+            this.flowQuarantinePanel.BackColor = System.Drawing.Color.LightCyan;
+            this.flowQuarantinePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowQuarantinePanel.Location = new System.Drawing.Point(62, 129);
+            this.flowQuarantinePanel.Name = "flowQuarantinePanel";
+            this.flowQuarantinePanel.Size = new System.Drawing.Size(803, 216);
+            this.flowQuarantinePanel.TabIndex = 3;
+            // 
+            // TitleQuarantine
+            // 
+            this.TitleQuarantine.AutoSize = true;
+            this.TitleQuarantine.Font = new System.Drawing.Font("Segoe UI Light", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TitleQuarantine.Location = new System.Drawing.Point(363, 42);
+            this.TitleQuarantine.Name = "TitleQuarantine";
+            this.TitleQuarantine.Size = new System.Drawing.Size(186, 54);
+            this.TitleQuarantine.TabIndex = 2;
+            this.TitleQuarantine.Text = "Карантин";
             // 
             // pReport
             // 
@@ -441,75 +604,16 @@
             this.flowReportPanel.AutoScroll = true;
             this.flowReportPanel.BackColor = System.Drawing.Color.LightCyan;
             this.flowReportPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowReportPanel.Controls.Add(this.pReportElem);
             this.flowReportPanel.Location = new System.Drawing.Point(32, 136);
             this.flowReportPanel.Name = "flowReportPanel";
             this.flowReportPanel.Size = new System.Drawing.Size(859, 247);
             this.flowReportPanel.TabIndex = 2;
             // 
-            // pReportElem
-            // 
-            this.pReportElem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pReportElem.Controls.Add(this.tReportDir);
-            this.pReportElem.Controls.Add(this.lReportVirus);
-            this.pReportElem.Controls.Add(this.lReportCountFile);
-            this.pReportElem.Controls.Add(this.lReportDateEnd);
-            this.pReportElem.Controls.Add(this.lReportDateStart);
-            this.pReportElem.Location = new System.Drawing.Point(3, 3);
-            this.pReportElem.Name = "pReportElem";
-            this.pReportElem.Size = new System.Drawing.Size(826, 26);
-            this.pReportElem.TabIndex = 0;
-            // 
-            // tReportDir
-            // 
-            this.tReportDir.BackColor = System.Drawing.Color.AliceBlue;
-            this.tReportDir.Location = new System.Drawing.Point(261, 2);
-            this.tReportDir.Name = "tReportDir";
-            this.tReportDir.ReadOnly = true;
-            this.tReportDir.Size = new System.Drawing.Size(376, 20);
-            this.tReportDir.TabIndex = 5;
-            // 
-            // lReportVirus
-            // 
-            this.lReportVirus.AutoSize = true;
-            this.lReportVirus.Location = new System.Drawing.Point(753, 6);
-            this.lReportVirus.Name = "lReportVirus";
-            this.lReportVirus.Size = new System.Drawing.Size(35, 13);
-            this.lReportVirus.TabIndex = 4;
-            this.lReportVirus.Text = "label3";
-            // 
-            // lReportCountFile
-            // 
-            this.lReportCountFile.AutoSize = true;
-            this.lReportCountFile.Location = new System.Drawing.Point(643, 6);
-            this.lReportCountFile.Name = "lReportCountFile";
-            this.lReportCountFile.Size = new System.Drawing.Size(35, 13);
-            this.lReportCountFile.TabIndex = 3;
-            this.lReportCountFile.Text = "label2";
-            // 
-            // lReportDateEnd
-            // 
-            this.lReportDateEnd.AutoSize = true;
-            this.lReportDateEnd.Location = new System.Drawing.Point(119, 6);
-            this.lReportDateEnd.Name = "lReportDateEnd";
-            this.lReportDateEnd.Size = new System.Drawing.Size(35, 13);
-            this.lReportDateEnd.TabIndex = 1;
-            this.lReportDateEnd.Text = "label3";
-            // 
-            // lReportDateStart
-            // 
-            this.lReportDateStart.AutoSize = true;
-            this.lReportDateStart.Location = new System.Drawing.Point(3, 6);
-            this.lReportDateStart.Name = "lReportDateStart";
-            this.lReportDateStart.Size = new System.Drawing.Size(35, 13);
-            this.lReportDateStart.TabIndex = 0;
-            this.lReportDateStart.Text = "label2";
-            // 
             // TitleReport
             // 
             this.TitleReport.AutoSize = true;
             this.TitleReport.Font = new System.Drawing.Font("Segoe UI Light", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TitleReport.Location = new System.Drawing.Point(355, 43);
+            this.TitleReport.Location = new System.Drawing.Point(349, 40);
             this.TitleReport.Name = "TitleReport";
             this.TitleReport.Size = new System.Drawing.Size(220, 54);
             this.TitleReport.TabIndex = 1;
@@ -523,88 +627,6 @@
             this.pUpdate.Size = new System.Drawing.Size(62, 54);
             this.pUpdate.TabIndex = 13;
             this.pUpdate.Visible = false;
-            // 
-            // pEditAddMon
-            // 
-            this.pEditAddMon.Controls.Add(this.bSaveEditAddMon);
-            this.pEditAddMon.Controls.Add(this.bCloseEditAddMon);
-            this.pEditAddMon.Controls.Add(this.rdEditAddMon);
-            this.pEditAddMon.Controls.Add(this.rqEditAddMon);
-            this.pEditAddMon.Controls.Add(this.tEditAddMon);
-            this.pEditAddMon.Controls.Add(this.lEditAddMon);
-            this.pEditAddMon.Location = new System.Drawing.Point(146, 86);
-            this.pEditAddMon.Name = "pEditAddMon";
-            this.pEditAddMon.Size = new System.Drawing.Size(630, 307);
-            this.pEditAddMon.TabIndex = 5;
-            this.pEditAddMon.Visible = false;
-            // 
-            // lEditAddMon
-            // 
-            this.lEditAddMon.AutoSize = true;
-            this.lEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.lEditAddMon.Location = new System.Drawing.Point(20, 38);
-            this.lEditAddMon.Name = "lEditAddMon";
-            this.lEditAddMon.Size = new System.Drawing.Size(45, 21);
-            this.lEditAddMon.TabIndex = 0;
-            this.lEditAddMon.Text = "Путь:";
-            // 
-            // tEditAddMon
-            // 
-            this.tEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.tEditAddMon.Location = new System.Drawing.Point(82, 34);
-            this.tEditAddMon.Name = "tEditAddMon";
-            this.tEditAddMon.Size = new System.Drawing.Size(487, 29);
-            this.tEditAddMon.TabIndex = 1;
-            // 
-            // rqEditAddMon
-            // 
-            this.rqEditAddMon.AutoSize = true;
-            this.rqEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.rqEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.rqEditAddMon.Location = new System.Drawing.Point(82, 98);
-            this.rqEditAddMon.Name = "rqEditAddMon";
-            this.rqEditAddMon.Size = new System.Drawing.Size(179, 25);
-            this.rqEditAddMon.TabIndex = 2;
-            this.rqEditAddMon.TabStop = true;
-            this.rqEditAddMon.Text = "Помещать в карантин";
-            this.rqEditAddMon.UseVisualStyleBackColor = true;
-            // 
-            // rdEditAddMon
-            // 
-            this.rdEditAddMon.AutoSize = true;
-            this.rdEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.rdEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.rdEditAddMon.Location = new System.Drawing.Point(82, 142);
-            this.rdEditAddMon.Name = "rdEditAddMon";
-            this.rdEditAddMon.Size = new System.Drawing.Size(81, 25);
-            this.rdEditAddMon.TabIndex = 3;
-            this.rdEditAddMon.TabStop = true;
-            this.rdEditAddMon.Text = "Удалять";
-            this.rdEditAddMon.UseVisualStyleBackColor = true;
-            // 
-            // bCloseEditAddMon
-            // 
-            this.bCloseEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bCloseEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.bCloseEditAddMon.Location = new System.Drawing.Point(137, 234);
-            this.bCloseEditAddMon.Name = "bCloseEditAddMon";
-            this.bCloseEditAddMon.Size = new System.Drawing.Size(120, 49);
-            this.bCloseEditAddMon.TabIndex = 4;
-            this.bCloseEditAddMon.Text = "Отмена";
-            this.bCloseEditAddMon.UseVisualStyleBackColor = true;
-            this.bCloseEditAddMon.Click += new System.EventHandler(this.bCloseEditAddMon_Click);
-            // 
-            // bSaveEditAddMon
-            // 
-            this.bSaveEditAddMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bSaveEditAddMon.Font = new System.Drawing.Font("Segoe UI Light", 15F);
-            this.bSaveEditAddMon.Location = new System.Drawing.Point(369, 234);
-            this.bSaveEditAddMon.Name = "bSaveEditAddMon";
-            this.bSaveEditAddMon.Size = new System.Drawing.Size(120, 49);
-            this.bSaveEditAddMon.TabIndex = 5;
-            this.bSaveEditAddMon.Text = "Сохранить";
-            this.bSaveEditAddMon.UseVisualStyleBackColor = true;
-            this.bSaveEditAddMon.Click += new System.EventHandler(this.bSaveEditAddMon_Click);
             // 
             // Form1
             // 
@@ -633,13 +655,12 @@
             this.pSearch.PerformLayout();
             this.pMonitoring.ResumeLayout(false);
             this.pMonitoring.PerformLayout();
-            this.pReport.ResumeLayout(false);
-            this.pReport.PerformLayout();
-            this.flowReportPanel.ResumeLayout(false);
-            this.pReportElem.ResumeLayout(false);
-            this.pReportElem.PerformLayout();
             this.pEditAddMon.ResumeLayout(false);
             this.pEditAddMon.PerformLayout();
+            this.pQuarantine.ResumeLayout(false);
+            this.pQuarantine.PerformLayout();
+            this.pReport.ResumeLayout(false);
+            this.pReport.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -674,16 +695,10 @@
         private System.Windows.Forms.Label TitleReport;
         private System.Windows.Forms.Label lTitleReportDateStart;
         private System.Windows.Forms.FlowLayoutPanel flowReportPanel;
-        private System.Windows.Forms.Panel pReportElem;
-        private System.Windows.Forms.Label lReportDateEnd;
-        private System.Windows.Forms.Label lReportDateStart;
         private System.Windows.Forms.Label lTitleReportVirus;
         private System.Windows.Forms.Label lTitleReportCountFile;
         private System.Windows.Forms.Label lTitleReportDir;
         private System.Windows.Forms.Label lTitleReportDateEnd;
-        private System.Windows.Forms.TextBox tReportDir;
-        private System.Windows.Forms.Label lReportVirus;
-        private System.Windows.Forms.Label lReportCountFile;
         private System.Windows.Forms.Panel pEditAddMon;
         private System.Windows.Forms.Button bSaveEditAddMon;
         private System.Windows.Forms.Button bCloseEditAddMon;
@@ -691,6 +706,13 @@
         private System.Windows.Forms.RadioButton rqEditAddMon;
         private System.Windows.Forms.TextBox tEditAddMon;
         private System.Windows.Forms.Label lEditAddMon;
+        private System.Windows.Forms.FlowLayoutPanel flowQuarantinePanel;
+        private System.Windows.Forms.Label TitleQuarantine;
+        private System.Windows.Forms.Label lQTitleType;
+        private System.Windows.Forms.Label lQTitleFile;
+        private System.Windows.Forms.Label lQTitleDate;
+        private System.Windows.Forms.Button bQRecavery;
+        private System.Windows.Forms.Button bQRemove;
     }
 }
 

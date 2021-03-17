@@ -23,6 +23,21 @@ namespace ClientUI
             pipeReadThread = new Thread(PipeReadThread);
             pipeReadThread.Start();
             allPanels = new List<Panel>() { pSearch,pUpdate,pQuarantine,pReport,pMonitoring};
+
+            DBwork db = new DBwork();
+            db.Connect("D:\\Учеба\\3 курс 2 семестр\\ЗИВПО\\", DBwork.DB.OptDB);
+            foreach(string str in db.getReport())
+            {
+                var paramReport = str.Split('|');
+                ReportElementFactory.AddElement(flowReportPanel, paramReport[0], paramReport[1], paramReport[2], paramReport[3], paramReport[4]);
+            }
+            foreach (string str in db.getQuarantine())
+            {
+                var paramReport = str.Split('|');
+                QuarantineElementFactory.AddElement(flowQuarantinePanel, paramReport[0], paramReport[1], paramReport[2]);
+            }
+            db.Disconnect();
+
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace ClientUI
     class ReportElementFactory
     {
         static int count = 0;
-        static private void AddElement(FlowLayoutPanel mainPanel,string dateStart,string dateEnd, string dir, string countFile, string countVirus)
+        static public void AddElement(FlowLayoutPanel mainPanel,string dateStart,string dateEnd, string dir, string countFile, string countVirus)
         {
             FlowLayoutPanel flowReportPanel = new FlowLayoutPanel();
             Panel pReportElem = new Panel();
