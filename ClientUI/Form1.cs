@@ -16,11 +16,13 @@ namespace ClientUI
         private Thread pipeReadThread;
         private StreamString streamWrite;
         private NamedPipeClientStream pipeWrite;
+        private List<Panel> allPanels;
         public Form1()
         {
             InitializeComponent();
             pipeReadThread = new Thread(PipeReadThread);
             pipeReadThread.Start();
+            allPanels = new List<Panel>() { pSearch,pUpdate,pQuarantine,pReport,pMonitoring};
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,6 +73,102 @@ namespace ClientUI
             }
             pipeReadThread.Abort();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            foreach(var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            pSearch.Visible = true;
+        }
+
+        private void btnMonitoring_Click(object sender, EventArgs e)
+        {
+            foreach (var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            pMonitoring.Visible = true;
+        }
+
+        private void btnQuarantine_Click(object sender, EventArgs e)
+        {
+            foreach (var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            pQuarantine.Visible = true;
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            foreach (var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            pReport.Visible = true;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            foreach (var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            pUpdate.Visible = true;
+        }
+
+        private void addMonitoring_Click(object sender, EventArgs e)
+        {
+            pEditAddMon.Visible = true;
+            rqEditAddMon.Checked = true;
+        }
+
+        private void removeMonitoring_Click(object sender, EventArgs e)
+        {
+            MonitoringElementFactory.RemoveElement(flowPanelMonitoring);
+        }
+
+        private void selectAllElementMonitoring_Click(object sender, EventArgs e)
+        {
+            MonitoringElementFactory.SelectAllCheckBox();
+        }
+
+        private void editMonitoring_Click(object sender, EventArgs e)
+        {
+            int rb = 0;
+            string path = MonitoringElementFactory.SelectUpdateElement(ref rb);
+            if (path != "")
+            {
+                pEditAddMon.Visible = true;
+                tEditAddMon.Text = path;
+                if (rb == 0) rqEditAddMon.Checked = true;
+                else rdEditAddMon.Checked = true;
+            }
+        }
+
+        private void bCloseEditAddMon_Click(object sender, EventArgs e)
+        {
+            pEditAddMon.Visible = false;
+            tEditAddMon.Text = "";
+            rqEditAddMon.Checked = false;
+            rdEditAddMon.Checked = false;
+            MonitoringElementFactory.editLine = -1;
+        }
+
+        private void bSaveEditAddMon_Click(object sender, EventArgs e)
+        {
+            int rb = 0;
+            if (rdEditAddMon.Checked) rb = 1;
+            MonitoringElementFactory.EditElement(flowPanelMonitoring, tEditAddMon.Text, rb);
+
+            pEditAddMon.Visible = false;
+            tEditAddMon.Text = "";
+            rqEditAddMon.Checked = false;
+            rdEditAddMon.Checked = false;
+        }
+
     }
 
     public class StreamString
