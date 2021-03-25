@@ -14,7 +14,7 @@ namespace ClientUI
         static List<TextBox> textBoxes = new List<TextBox>();
         static public int editLine = -1;
 
-        static private void AddElement(FlowLayoutPanel mainPanel,string path,int rb)
+        static private string AddElement(FlowLayoutPanel mainPanel,string path,int rb)
         {
             var pSubMon = new Panel();
             var rdSubMon = new RadioButton();
@@ -50,6 +50,7 @@ namespace ClientUI
             rdSubMon.TabStop = true;
             rdSubMon.Text = "Удалять";
             rdSubMon.UseVisualStyleBackColor = true;
+            rdSubMon.Enabled = false;
             // 
             // rqSubMon
             // 
@@ -61,6 +62,7 @@ namespace ClientUI
             rqSubMon.TabStop = true;
             rqSubMon.Text = "Помещать в карантин";
             rqSubMon.UseVisualStyleBackColor = true;
+            rqSubMon.Enabled = false;
             // 
             // tSubMon
             // 
@@ -92,28 +94,33 @@ namespace ClientUI
             }
 
             count++;
+            return path+"|"+rb;
         }
 
-        static public void EditElement(FlowLayoutPanel mainPanel, string path, int rb)
+        static public string EditElement(FlowLayoutPanel mainPanel, string path, int rb)
         {
-            if (editLine == -1) AddElement(mainPanel, path, rb);
-            else UpdateElement(path, rb);
+            if (editLine == -1) return AddElement(mainPanel, path, rb);
+            else return UpdateElement(path, rb);
         }
 
-        static private void UpdateElement(string path, int rb)
+        static private string UpdateElement(string path, int rb)
         {
+            var str = textBoxes[editLine].Text;
             textBoxes[editLine].Text = path;
             if (rb == 0)
             {
+                str += "|0";
                 radioButtonsQuarantine[editLine].Checked = true;
                 radioButtonsDestroy[editLine].Checked = false;
             }
             else
             {
+                str += "|1";
                 radioButtonsQuarantine[editLine].Checked = false;
                 radioButtonsDestroy[editLine].Checked = true;
             }
             editLine = -1;
+            return str+"|"+path+"|"+rb;
         }
 
         static public string SelectUpdateElement(ref int rb)
@@ -130,13 +137,14 @@ namespace ClientUI
             return "";
         }
 
-            static public void RemoveElement(FlowLayoutPanel mainPanel)
+            static public List<string> RemoveElement(FlowLayoutPanel mainPanel)
         {
+            var list = new List<string>();
             for(int i=checkBoxes.Count-1;i>=0;i--)
             {
                 if (checkBoxes[i].Checked)
                 {
-                    
+                    list.Add(textBoxes[i].Text);
                     mainPanel.Controls.Remove(panels[i]);
                     panels.RemoveAt(i);
                     checkBoxes.RemoveAt(i);
@@ -146,6 +154,24 @@ namespace ClientUI
                 }
             }
             mainPanel.Update();
+            return list;
+        }
+
+        static public List<string> RemoveAllElement(FlowLayoutPanel mainPanel)
+        {
+            var list = new List<string>();
+            for (int i = checkBoxes.Count - 1; i >= 0; i--)
+            {
+                    list.Add(textBoxes[i].Text);
+                    mainPanel.Controls.Remove(panels[i]);
+                    panels.RemoveAt(i);
+                    checkBoxes.RemoveAt(i);
+                    radioButtonsDestroy.RemoveAt(i);
+                    radioButtonsQuarantine.RemoveAt(i);
+                    textBoxes.RemoveAt(i);
+            }
+            mainPanel.Update();
+            return list;
         }
 
         static public void SelectAllCheckBox()

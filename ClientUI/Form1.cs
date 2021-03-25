@@ -6,6 +6,10 @@ using System.Windows.Forms;
 using System.IO.Pipes;
 using System.IO;
 using System.Security.Principal;
+using ServiceReference1;
+using System.ServiceModel;
+using ServiceReference1.AntiLib;
+
 
 namespace ClientUI
 {
@@ -13,80 +17,64 @@ namespace ClientUI
     public partial class Form1 : Form
     {
         private List<string> sendList = new List<string>();
-        private Thread pipeReadThread;
-        private StreamString streamWrite;
-        private NamedPipeClientStream pipeWrite;
         private List<Panel> allPanels;
+        public static MCFClient client = null;
         public Form1()
         {
             InitializeComponent();
-            pipeReadThread = new Thread(PipeReadThread);
-            pipeReadThread.Start();
             allPanels = new List<Panel>() { pSearch,pUpdate,pQuarantine,pReport,pMonitoring};
 
-            DBwork db = new DBwork();
-            db.Connect("D:\\Учеба\\3 курс 2 семестр\\ЗИВПО\\", DBwork.DB.OptDB);
-            foreach(string str in db.getReport())
+            Create_New_Client();
+
+            foreach (var q in client.GetObserver())
             {
-                var paramReport = str.Split('|');
-                ReportElementFactory.AddElement(flowReportPanel, paramReport[0], paramReport[1], paramReport[2], paramReport[3], paramReport[4]);
+                var str = q.Split('|');
+                MonitoringElementFactory.EditElement(flowPanelMonitoring, str[0], int.Parse(str[1]));
             }
-            foreach (string str in db.getQuarantine())
+
+            foreach (var q in client.GetTime())
             {
-                var paramReport = str.Split('|');
-                QuarantineElementFactory.AddElement(flowQuarantinePanel, paramReport[0], paramReport[1], paramReport[2]);
+                var str = q.Split('|');
+                UpdateElementFactory.AddElement(flowUpdatePanel, str[0],str[1], int.Parse(str[2]));
             }
-            db.Disconnect();
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Create_New_Client()
         {
-            string str = "N";
-            str += numericUpDown1.Value + "|P" + textBox1.Text;
-            if (checkBox1.Checked) str += "|Oa";
-            if (checkBox2.Checked) str += "|Ob";
-            if (checkBox3.Checked) str += "|Oc";
-            PipeWrite(str);
+            if (client == null) Try_To_Create_New_Client();
+            else MessageBox.Show("Cannot create a new client. The current Client is active.");
         }
 
-        public void PipeReadThread()
+        private void Try_To_Create_New_Client()
         {
             try
             {
-                var pipeRead = new NamedPipeClientStream(".", "pipeAntivirusServiceWrite", PipeDirection.InOut, PipeOptions.None, TokenImpersonationLevel.Impersonation);
-                pipeRead.Connect();
-                var ss = new StreamString(pipeRead);
-                while (true)
-                {
-                    var text = ss.ReadString();
-                    if (text == "error") continue;
-                    label1.Invoke(new Action(() => label1.Text = text));
-                }
-            }
-            catch (IOException e)
-            {
-            }
-        }
 
-        public void PipeWrite(string text)
-        {
-            if (pipeWrite==null)
-                pipeWrite = new NamedPipeClientStream(".", "pipeAntivirusServiceRead", PipeDirection.InOut, PipeOptions.None, TokenImpersonationLevel.Impersonation);
-            if (!pipeWrite.IsConnected)
-                pipeWrite.Connect();
-            if (streamWrite==null) 
-                streamWrite = new StreamString(pipeWrite);
-            streamWrite.WriteString(text);
+                NetTcpBinding binding = new NetTcpBinding(SecurityMode.Transport);
+
+                binding.Security.Message.ClientCredentialType = MessageCredentialType.Windows;
+                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+                binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
+
+                string uri = "net.tcp://localhost:9002/AntivirusService";
+
+                EndpointAddress endpoint = new EndpointAddress(new Uri(uri));
+
+                client = new MCFClient(binding, endpoint);
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error while creating new client (server might be stopped).");
+                client = null;
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (pipeWrite != null)
-            {            
-                pipeWrite.Dispose();
-            }
-            pipeReadThread.Abort();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -109,6 +97,12 @@ namespace ClientUI
 
         private void btnQuarantine_Click(object sender, EventArgs e)
         {
+            QuarantineElementFactory.RemoveAllElement(flowQuarantinePanel);
+            foreach (var q in client.GetQuarantine())
+            {
+                var str = q.Split('|');
+                QuarantineElementFactory.AddElement(flowQuarantinePanel, str[0], str[1], str[2]);
+            }
             foreach (var panel in allPanels)
             {
                 panel.Visible = false;
@@ -118,6 +112,12 @@ namespace ClientUI
 
         private void btnReport_Click(object sender, EventArgs e)
         {
+            ReportElementFactory.RemoveAllElement(flowReportPanel);
+            foreach (var q in client.GetReport())
+            {
+                var str = q.Split('|');
+                ReportElementFactory.AddElement(flowReportPanel,flowFilePanel, str[0], str[1], str[2],str[3],str[4], str[5]);
+            }
             foreach (var panel in allPanels)
             {
                 panel.Visible = false;
@@ -142,7 +142,10 @@ namespace ClientUI
 
         private void removeMonitoring_Click(object sender, EventArgs e)
         {
-            MonitoringElementFactory.RemoveElement(flowPanelMonitoring);
+            foreach (var path in MonitoringElementFactory.RemoveElement(flowPanelMonitoring))
+            {
+                client.DestroyObserver(path);
+            }
         }
 
         private void selectAllElementMonitoring_Click(object sender, EventArgs e)
@@ -174,62 +177,129 @@ namespace ClientUI
 
         private void bSaveEditAddMon_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(tEditAddMon.Text) && Directory.Exists(tEditAddMon.Text))
+            {
+                int rb = 0;
+                if (rdEditAddMon.Checked) rb = 1;
+                var str = MonitoringElementFactory.EditElement(flowPanelMonitoring, tEditAddMon.Text, rb);
+
+                var arrStr = str.Split('|');
+                if (arrStr.Length == 3) {
+                    client.DestroyObserver(arrStr[0]);
+                    client.CreateObserver(arrStr[1], (DateValueOperation)int.Parse(arrStr[2]));
+                }
+                else
+                {
+                    client.CreateObserver(arrStr[0], (DateValueOperation)int.Parse(arrStr[1]));
+                }
+
+                pEditAddMon.Visible = false;
+                tEditAddMon.Text = "";
+                rqEditAddMon.Checked = false;
+                rdEditAddMon.Checked = false;
+            }
+        }
+
+        private void lDropSearch_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            tSearchPath.Text = s[0];
+        }
+
+        private void lDropSearch_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void bOpenFolder_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    tSearchPath.Text = fbd.SelectedPath;
+                }
+            }
+        }
+
+        private void bQRecavery_Click(object sender, EventArgs e)
+        {
+            foreach(var path in QuarantineElementFactory.RemoveElement(flowQuarantinePanel))
+            {
+                client.MoveBackQuarantine(path);
+            }
+        }
+
+        private void bQRemove_Click(object sender, EventArgs e)
+        {
+            foreach (var path in QuarantineElementFactory.RemoveElement(flowQuarantinePanel))
+            {
+                client.DeleteFile(path);
+            }
+        }
+
+        private void bScanStart_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(tSearchPath.Text) || Directory.Exists(tSearchPath.Text))
+            {
+                int rb = 0;
+                if (rdSearch.Checked == true) rb = 1;
+                client.StartScaning(tSearchPath.Text, (DateValueOperation)rb);
+                pProgressScan.Visible = true;
+            } 
+        }
+
+        private void bScanStop_Click(object sender, EventArgs e)
+        {
+            client.StopScaning();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            pProgressScan.Visible = client.GetStatus();
+            if (client.GetStatus())
+            {
+                progressScan.Value = (int)(client.GetProgress()*progressScan.Maximum);
+                Console.WriteLine(client.GetProgress());
+            }
+        }
+
+        private void bUpdateAdd_Click(object sender, EventArgs e)
+        {
             int rb = 0;
-            if (rdEditAddMon.Checked) rb = 1;
-            MonitoringElementFactory.EditElement(flowPanelMonitoring, tEditAddMon.Text, rb);
-
-            pEditAddMon.Visible = false;
-            tEditAddMon.Text = "";
-            rqEditAddMon.Checked = false;
-            rdEditAddMon.Checked = false;
+            if (rdUpdate.Checked) rb = 1;
+            UpdateElementFactory.AddElement(flowUpdatePanel, ncUpdate.Value+":"+nmUpdate.Value, tUpdate.Text,rb);
+            client.AddTime(ncUpdate.Value + ":" + nmUpdate.Value, tUpdate.Text, (DateValueOperation)rb);
         }
 
-    }
-
-    public class StreamString
-    {
-        private Stream ioStream;
-        private UnicodeEncoding streamEncoding;
-
-        public StreamString(Stream ioStream)
+        private void bUpdateDelete_Click(object sender, EventArgs e)
         {
-            this.ioStream = ioStream;
-            streamEncoding = new UnicodeEncoding();
-        }
-
-        public string ReadString()
-        {
-            try
+            var arr=UpdateElementFactory.RemoveElement(flowUpdatePanel);
+            foreach(var t in arr)
             {
-                int len = 0;
-
-                len = ioStream.ReadByte() * 256;
-                len += ioStream.ReadByte();
-                byte[] inBuffer = new byte[len];
-                ioStream.Read(inBuffer, 0, len);
-
-                return streamEncoding.GetString(inBuffer);
-            }
-            catch (Exception ex)
-            {
-                return "error";
+                var str = t.Split('|');
+                client.DeleteTime(str[0], str[1]);
             }
         }
 
-        public int WriteString(string outString)
+        private void bUpdateOpenDialog_Click(object sender, EventArgs e)
         {
-            byte[] outBuffer = streamEncoding.GetBytes(outString);
-            int len = outBuffer.Length;
-            if (len > UInt16.MaxValue)
+            using (var fbd = new FolderBrowserDialog())
             {
-                len = (int)UInt16.MaxValue;
-            }
-            ioStream.WriteByte((byte)(len / 256));
-            ioStream.WriteByte((byte)(len & 255));
-            ioStream.Write(outBuffer, 0, len);
-            ioStream.Flush();
+                DialogResult result = fbd.ShowDialog();
 
-            return outBuffer.Length + 2;
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    tUpdate.Text = fbd.SelectedPath;
+                }
+            }
+        }
+
+        private void pReport_Click(object sender, EventArgs e)
+        {
+            flowFilePanel.Visible = false;
         }
     }
 }

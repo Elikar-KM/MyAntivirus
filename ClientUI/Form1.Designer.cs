@@ -28,13 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnMonitoring = new System.Windows.Forms.Button();
@@ -43,6 +37,17 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pSearch = new System.Windows.Forms.Panel();
+            this.lTitleScan = new System.Windows.Forms.Label();
+            this.pProgressScan = new System.Windows.Forms.Panel();
+            this.bScanStop = new System.Windows.Forms.Button();
+            this.progressScan = new System.Windows.Forms.ProgressBar();
+            this.bScanStart = new System.Windows.Forms.Button();
+            this.bOpenFolder = new System.Windows.Forms.Button();
+            this.lSearch = new System.Windows.Forms.Label();
+            this.tSearchPath = new System.Windows.Forms.TextBox();
+            this.lDropSearch = new System.Windows.Forms.Label();
+            this.rdSearch = new System.Windows.Forms.RadioButton();
+            this.rqSearch = new System.Windows.Forms.RadioButton();
             this.pMonitoring = new System.Windows.Forms.Panel();
             this.pEditAddMon = new System.Windows.Forms.Panel();
             this.bSaveEditAddMon = new System.Windows.Forms.Button();
@@ -66,6 +71,7 @@
             this.flowQuarantinePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TitleQuarantine = new System.Windows.Forms.Label();
             this.pReport = new System.Windows.Forms.Panel();
+            this.flowFilePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lTitleReportVirus = new System.Windows.Forms.Label();
             this.lTitleReportCountFile = new System.Windows.Forms.Label();
             this.lTitleReportDir = new System.Windows.Forms.Label();
@@ -74,78 +80,33 @@
             this.flowReportPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TitleReport = new System.Windows.Forms.Label();
             this.pUpdate = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.lFlatTitlePath = new System.Windows.Forms.Label();
+            this.lFlatTitleTime = new System.Windows.Forms.Label();
+            this.bUpdateOpenDialog = new System.Windows.Forms.Button();
+            this.lTitlePath = new System.Windows.Forms.Label();
+            this.lTitleTime = new System.Windows.Forms.Label();
+            this.nmUpdate = new System.Windows.Forms.NumericUpDown();
+            this.ncUpdate = new System.Windows.Forms.NumericUpDown();
+            this.rdUpdate = new System.Windows.Forms.RadioButton();
+            this.rqUpdate = new System.Windows.Forms.RadioButton();
+            this.tUpdate = new System.Windows.Forms.TextBox();
+            this.bUpdateDelete = new System.Windows.Forms.Button();
+            this.bUpdateAdd = new System.Windows.Forms.Button();
+            this.flowUpdatePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.lTitleUpdate = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pSearch.SuspendLayout();
+            this.pProgressScan.SuspendLayout();
             this.pMonitoring.SuspendLayout();
             this.pEditAddMon.SuspendLayout();
             this.pQuarantine.SuspendLayout();
             this.pReport.SuspendLayout();
+            this.pUpdate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmUpdate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ncUpdate)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(150, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(69, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(69, 163);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(34, 110);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(451, 23);
-            this.label1.TabIndex = 2;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(256, 11);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(32, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "a";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(256, 35);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(32, 17);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "b";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(256, 59);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(32, 17);
-            this.checkBox3.TabIndex = 5;
-            this.checkBox3.Text = "c";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 11);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 6;
             // 
             // flowLayoutPanel1
             // 
@@ -240,7 +201,7 @@
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.AutoSize = true;
             this.btnUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.btnUpdate.BackgroundImage = global::ClientUI.Properties.Resources.Update;
+            this.btnUpdate.BackgroundImage = global::ClientUI.Properties.Resources.Time;
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -267,18 +228,143 @@
             // pSearch
             // 
             this.pSearch.BackColor = System.Drawing.Color.LightCyan;
-            this.pSearch.Controls.Add(this.numericUpDown1);
-            this.pSearch.Controls.Add(this.textBox1);
-            this.pSearch.Controls.Add(this.button1);
-            this.pSearch.Controls.Add(this.checkBox3);
-            this.pSearch.Controls.Add(this.label1);
-            this.pSearch.Controls.Add(this.checkBox2);
-            this.pSearch.Controls.Add(this.checkBox1);
-            this.pSearch.Location = new System.Drawing.Point(1118, 159);
+            this.pSearch.Controls.Add(this.lTitleScan);
+            this.pSearch.Controls.Add(this.pProgressScan);
+            this.pSearch.Controls.Add(this.bScanStart);
+            this.pSearch.Controls.Add(this.bOpenFolder);
+            this.pSearch.Controls.Add(this.lSearch);
+            this.pSearch.Controls.Add(this.tSearchPath);
+            this.pSearch.Controls.Add(this.lDropSearch);
+            this.pSearch.Controls.Add(this.rdSearch);
+            this.pSearch.Controls.Add(this.rqSearch);
+            this.pSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pSearch.Location = new System.Drawing.Point(0, 0);
             this.pSearch.Name = "pSearch";
-            this.pSearch.Size = new System.Drawing.Size(105, 74);
+            this.pSearch.Size = new System.Drawing.Size(924, 407);
             this.pSearch.TabIndex = 9;
             this.pSearch.Visible = false;
+            // 
+            // lTitleScan
+            // 
+            this.lTitleScan.AutoSize = true;
+            this.lTitleScan.Font = new System.Drawing.Font("Segoe UI Light", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lTitleScan.Location = new System.Drawing.Point(325, 27);
+            this.lTitleScan.Name = "lTitleScan";
+            this.lTitleScan.Size = new System.Drawing.Size(276, 54);
+            this.lTitleScan.TabIndex = 8;
+            this.lTitleScan.Text = "Сканирование";
+            // 
+            // pProgressScan
+            // 
+            this.pProgressScan.Controls.Add(this.bScanStop);
+            this.pProgressScan.Controls.Add(this.progressScan);
+            this.pProgressScan.Location = new System.Drawing.Point(179, 84);
+            this.pProgressScan.Name = "pProgressScan";
+            this.pProgressScan.Size = new System.Drawing.Size(561, 301);
+            this.pProgressScan.TabIndex = 7;
+            this.pProgressScan.Visible = false;
+            // 
+            // bScanStop
+            // 
+            this.bScanStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bScanStop.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.bScanStop.Location = new System.Drawing.Point(148, 35);
+            this.bScanStop.Name = "bScanStop";
+            this.bScanStop.Size = new System.Drawing.Size(267, 49);
+            this.bScanStop.TabIndex = 1;
+            this.bScanStop.Text = "Остановить сканирование";
+            this.bScanStop.UseVisualStyleBackColor = true;
+            this.bScanStop.Click += new System.EventHandler(this.bScanStop_Click);
+            // 
+            // progressScan
+            // 
+            this.progressScan.BackColor = System.Drawing.Color.LightCyan;
+            this.progressScan.Location = new System.Drawing.Point(0, 131);
+            this.progressScan.Name = "progressScan";
+            this.progressScan.Size = new System.Drawing.Size(561, 103);
+            this.progressScan.Step = 1;
+            this.progressScan.TabIndex = 0;
+            // 
+            // bScanStart
+            // 
+            this.bScanStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bScanStart.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.bScanStart.Location = new System.Drawing.Point(291, 84);
+            this.bScanStart.Name = "bScanStart";
+            this.bScanStart.Size = new System.Drawing.Size(336, 42);
+            this.bScanStart.TabIndex = 6;
+            this.bScanStart.Text = "Начать сканирование";
+            this.bScanStart.UseVisualStyleBackColor = true;
+            this.bScanStart.Click += new System.EventHandler(this.bScanStart_Click);
+            // 
+            // bOpenFolder
+            // 
+            this.bOpenFolder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bOpenFolder.Location = new System.Drawing.Point(710, 172);
+            this.bOpenFolder.Name = "bOpenFolder";
+            this.bOpenFolder.Size = new System.Drawing.Size(30, 23);
+            this.bOpenFolder.TabIndex = 5;
+            this.bOpenFolder.Text = "...";
+            this.bOpenFolder.UseVisualStyleBackColor = true;
+            this.bOpenFolder.Click += new System.EventHandler(this.bOpenFolder_Click);
+            // 
+            // lSearch
+            // 
+            this.lSearch.AutoSize = true;
+            this.lSearch.Font = new System.Drawing.Font("Segoe UI Light", 10F);
+            this.lSearch.Location = new System.Drawing.Point(176, 174);
+            this.lSearch.Name = "lSearch";
+            this.lSearch.Size = new System.Drawing.Size(38, 19);
+            this.lSearch.TabIndex = 4;
+            this.lSearch.Text = "Путь:";
+            // 
+            // tSearchPath
+            // 
+            this.tSearchPath.Location = new System.Drawing.Point(217, 174);
+            this.tSearchPath.Name = "tSearchPath";
+            this.tSearchPath.Size = new System.Drawing.Size(487, 20);
+            this.tSearchPath.TabIndex = 3;
+            // 
+            // lDropSearch
+            // 
+            this.lDropSearch.AllowDrop = true;
+            this.lDropSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lDropSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lDropSearch.Font = new System.Drawing.Font("Segoe UI Light", 15F);
+            this.lDropSearch.Location = new System.Drawing.Point(180, 198);
+            this.lDropSearch.Name = "lDropSearch";
+            this.lDropSearch.Size = new System.Drawing.Size(560, 172);
+            this.lDropSearch.TabIndex = 2;
+            this.lDropSearch.Text = "Перетащите сюда папку или файл";
+            this.lDropSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lDropSearch.DragDrop += new System.Windows.Forms.DragEventHandler(this.lDropSearch_DragDrop);
+            this.lDropSearch.DragEnter += new System.Windows.Forms.DragEventHandler(this.lDropSearch_DragEnter);
+            // 
+            // rdSearch
+            // 
+            this.rdSearch.AutoSize = true;
+            this.rdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rdSearch.Font = new System.Drawing.Font("Segoe UI Light", 13F);
+            this.rdSearch.Location = new System.Drawing.Point(551, 134);
+            this.rdSearch.Name = "rdSearch";
+            this.rdSearch.Size = new System.Drawing.Size(90, 29);
+            this.rdSearch.TabIndex = 1;
+            this.rdSearch.Text = "Удалять";
+            this.rdSearch.UseVisualStyleBackColor = true;
+            // 
+            // rqSearch
+            // 
+            this.rqSearch.AutoSize = true;
+            this.rqSearch.Checked = true;
+            this.rqSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rqSearch.Font = new System.Drawing.Font("Segoe UI Light", 13F);
+            this.rqSearch.Location = new System.Drawing.Point(282, 134);
+            this.rqSearch.Name = "rqSearch";
+            this.rqSearch.Size = new System.Drawing.Size(201, 29);
+            this.rqSearch.TabIndex = 0;
+            this.rqSearch.TabStop = true;
+            this.rqSearch.Text = "Помещать в карантин";
+            this.rqSearch.UseVisualStyleBackColor = true;
             // 
             // pMonitoring
             // 
@@ -305,9 +391,9 @@
             this.pEditAddMon.Controls.Add(this.rqEditAddMon);
             this.pEditAddMon.Controls.Add(this.tEditAddMon);
             this.pEditAddMon.Controls.Add(this.lEditAddMon);
-            this.pEditAddMon.Location = new System.Drawing.Point(146, 86);
+            this.pEditAddMon.Location = new System.Drawing.Point(146, 96);
             this.pEditAddMon.Name = "pEditAddMon";
-            this.pEditAddMon.Size = new System.Drawing.Size(630, 307);
+            this.pEditAddMon.Size = new System.Drawing.Size(630, 297);
             this.pEditAddMon.TabIndex = 5;
             this.pEditAddMon.Visible = false;
             // 
@@ -470,6 +556,7 @@
             this.bQRemove.TabIndex = 4;
             this.bQRemove.Text = "Удалить";
             this.bQRemove.UseVisualStyleBackColor = true;
+            this.bQRemove.Click += new System.EventHandler(this.bQRemove_Click);
             // 
             // bQRecavery
             // 
@@ -481,6 +568,7 @@
             this.bQRecavery.TabIndex = 0;
             this.bQRecavery.Text = "Восстановить";
             this.bQRecavery.UseVisualStyleBackColor = true;
+            this.bQRecavery.Click += new System.EventHandler(this.bQRecavery_Click);
             // 
             // lQTitleType
             // 
@@ -535,6 +623,7 @@
             // pReport
             // 
             this.pReport.BackColor = System.Drawing.Color.LightCyan;
+            this.pReport.Controls.Add(this.flowFilePanel);
             this.pReport.Controls.Add(this.lTitleReportVirus);
             this.pReport.Controls.Add(this.lTitleReportCountFile);
             this.pReport.Controls.Add(this.lTitleReportDir);
@@ -548,12 +637,23 @@
             this.pReport.Size = new System.Drawing.Size(924, 407);
             this.pReport.TabIndex = 12;
             this.pReport.Visible = false;
+            this.pReport.Click += new System.EventHandler(this.pReport_Click);
+            // 
+            // flowFilePanel
+            // 
+            this.flowFilePanel.AutoScroll = true;
+            this.flowFilePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowFilePanel.Location = new System.Drawing.Point(32, 101);
+            this.flowFilePanel.Name = "flowFilePanel";
+            this.flowFilePanel.Size = new System.Drawing.Size(859, 283);
+            this.flowFilePanel.TabIndex = 8;
+            this.flowFilePanel.Visible = false;
             // 
             // lTitleReportVirus
             // 
             this.lTitleReportVirus.AutoSize = true;
             this.lTitleReportVirus.Font = new System.Drawing.Font("Segoe UI Light", 9F);
-            this.lTitleReportVirus.Location = new System.Drawing.Point(790, 118);
+            this.lTitleReportVirus.Location = new System.Drawing.Point(689, 118);
             this.lTitleReportVirus.Name = "lTitleReportVirus";
             this.lTitleReportVirus.Size = new System.Drawing.Size(36, 15);
             this.lTitleReportVirus.TabIndex = 7;
@@ -563,7 +663,7 @@
             // 
             this.lTitleReportCountFile.AutoSize = true;
             this.lTitleReportCountFile.Font = new System.Drawing.Font("Segoe UI Light", 9F);
-            this.lTitleReportCountFile.Location = new System.Drawing.Point(680, 118);
+            this.lTitleReportCountFile.Location = new System.Drawing.Point(579, 118);
             this.lTitleReportCountFile.Name = "lTitleReportCountFile";
             this.lTitleReportCountFile.Size = new System.Drawing.Size(111, 15);
             this.lTitleReportCountFile.TabIndex = 6;
@@ -573,7 +673,7 @@
             // 
             this.lTitleReportDir.AutoSize = true;
             this.lTitleReportDir.Font = new System.Drawing.Font("Segoe UI Light", 9F);
-            this.lTitleReportDir.Location = new System.Drawing.Point(295, 120);
+            this.lTitleReportDir.Location = new System.Drawing.Point(297, 118);
             this.lTitleReportDir.Name = "lTitleReportDir";
             this.lTitleReportDir.Size = new System.Drawing.Size(102, 15);
             this.lTitleReportDir.TabIndex = 5;
@@ -622,11 +722,178 @@
             // pUpdate
             // 
             this.pUpdate.BackColor = System.Drawing.Color.LightCyan;
-            this.pUpdate.Location = new System.Drawing.Point(1119, 298);
+            this.pUpdate.Controls.Add(this.lFlatTitlePath);
+            this.pUpdate.Controls.Add(this.lFlatTitleTime);
+            this.pUpdate.Controls.Add(this.bUpdateOpenDialog);
+            this.pUpdate.Controls.Add(this.lTitlePath);
+            this.pUpdate.Controls.Add(this.lTitleTime);
+            this.pUpdate.Controls.Add(this.nmUpdate);
+            this.pUpdate.Controls.Add(this.ncUpdate);
+            this.pUpdate.Controls.Add(this.rdUpdate);
+            this.pUpdate.Controls.Add(this.rqUpdate);
+            this.pUpdate.Controls.Add(this.tUpdate);
+            this.pUpdate.Controls.Add(this.bUpdateDelete);
+            this.pUpdate.Controls.Add(this.bUpdateAdd);
+            this.pUpdate.Controls.Add(this.flowUpdatePanel);
+            this.pUpdate.Controls.Add(this.lTitleUpdate);
+            this.pUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pUpdate.Location = new System.Drawing.Point(0, 0);
             this.pUpdate.Name = "pUpdate";
-            this.pUpdate.Size = new System.Drawing.Size(62, 54);
+            this.pUpdate.Size = new System.Drawing.Size(924, 407);
             this.pUpdate.TabIndex = 13;
             this.pUpdate.Visible = false;
+            // 
+            // lFlatTitlePath
+            // 
+            this.lFlatTitlePath.AutoSize = true;
+            this.lFlatTitlePath.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lFlatTitlePath.Location = new System.Drawing.Point(232, 204);
+            this.lFlatTitlePath.Name = "lFlatTitlePath";
+            this.lFlatTitlePath.Size = new System.Drawing.Size(30, 15);
+            this.lFlatTitlePath.TabIndex = 14;
+            this.lFlatTitlePath.Text = "Путь";
+            // 
+            // lFlatTitleTime
+            // 
+            this.lFlatTitleTime.AutoSize = true;
+            this.lFlatTitleTime.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lFlatTitleTime.Location = new System.Drawing.Point(176, 204);
+            this.lFlatTitleTime.Name = "lFlatTitleTime";
+            this.lFlatTitleTime.Size = new System.Drawing.Size(41, 15);
+            this.lFlatTitleTime.TabIndex = 13;
+            this.lFlatTitleTime.Text = "Время";
+            // 
+            // bUpdateOpenDialog
+            // 
+            this.bUpdateOpenDialog.Location = new System.Drawing.Point(714, 177);
+            this.bUpdateOpenDialog.Name = "bUpdateOpenDialog";
+            this.bUpdateOpenDialog.Size = new System.Drawing.Size(25, 20);
+            this.bUpdateOpenDialog.TabIndex = 12;
+            this.bUpdateOpenDialog.Text = "...";
+            this.bUpdateOpenDialog.UseVisualStyleBackColor = true;
+            this.bUpdateOpenDialog.Click += new System.EventHandler(this.bUpdateOpenDialog_Click);
+            // 
+            // lTitlePath
+            // 
+            this.lTitlePath.AutoSize = true;
+            this.lTitlePath.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lTitlePath.Location = new System.Drawing.Point(175, 178);
+            this.lTitlePath.Name = "lTitlePath";
+            this.lTitlePath.Size = new System.Drawing.Size(38, 19);
+            this.lTitlePath.TabIndex = 11;
+            this.lTitlePath.Text = "Путь:";
+            // 
+            // lTitleTime
+            // 
+            this.lTitleTime.AutoSize = true;
+            this.lTitleTime.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lTitleTime.Location = new System.Drawing.Point(175, 153);
+            this.lTitleTime.Name = "lTitleTime";
+            this.lTitleTime.Size = new System.Drawing.Size(51, 19);
+            this.lTitleTime.TabIndex = 10;
+            this.lTitleTime.Text = "Время:";
+            // 
+            // nmUpdate
+            // 
+            this.nmUpdate.Location = new System.Drawing.Point(286, 154);
+            this.nmUpdate.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.nmUpdate.Name = "nmUpdate";
+            this.nmUpdate.Size = new System.Drawing.Size(49, 20);
+            this.nmUpdate.TabIndex = 9;
+            // 
+            // ncUpdate
+            // 
+            this.ncUpdate.Location = new System.Drawing.Point(230, 154);
+            this.ncUpdate.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.ncUpdate.Name = "ncUpdate";
+            this.ncUpdate.Size = new System.Drawing.Size(49, 20);
+            this.ncUpdate.TabIndex = 8;
+            // 
+            // rdUpdate
+            // 
+            this.rdUpdate.AutoSize = true;
+            this.rdUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rdUpdate.Location = new System.Drawing.Point(559, 155);
+            this.rdUpdate.Name = "rdUpdate";
+            this.rdUpdate.Size = new System.Drawing.Size(67, 17);
+            this.rdUpdate.TabIndex = 7;
+            this.rdUpdate.Text = "Удалять";
+            this.rdUpdate.UseVisualStyleBackColor = true;
+            // 
+            // rqUpdate
+            // 
+            this.rqUpdate.AutoSize = true;
+            this.rqUpdate.Checked = true;
+            this.rqUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rqUpdate.Location = new System.Drawing.Point(403, 154);
+            this.rqUpdate.Name = "rqUpdate";
+            this.rqUpdate.Size = new System.Drawing.Size(137, 17);
+            this.rqUpdate.TabIndex = 6;
+            this.rqUpdate.TabStop = true;
+            this.rqUpdate.Text = "Помещать в карантин";
+            this.rqUpdate.UseVisualStyleBackColor = true;
+            // 
+            // tUpdate
+            // 
+            this.tUpdate.Location = new System.Drawing.Point(230, 178);
+            this.tUpdate.Name = "tUpdate";
+            this.tUpdate.Size = new System.Drawing.Size(478, 20);
+            this.tUpdate.TabIndex = 5;
+            // 
+            // bUpdateDelete
+            // 
+            this.bUpdateDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bUpdateDelete.Location = new System.Drawing.Point(176, 119);
+            this.bUpdateDelete.Name = "bUpdateDelete";
+            this.bUpdateDelete.Size = new System.Drawing.Size(75, 23);
+            this.bUpdateDelete.TabIndex = 4;
+            this.bUpdateDelete.Text = "Удалить";
+            this.bUpdateDelete.UseVisualStyleBackColor = true;
+            this.bUpdateDelete.Click += new System.EventHandler(this.bUpdateDelete_Click);
+            // 
+            // bUpdateAdd
+            // 
+            this.bUpdateAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bUpdateAdd.Location = new System.Drawing.Point(267, 119);
+            this.bUpdateAdd.Name = "bUpdateAdd";
+            this.bUpdateAdd.Size = new System.Drawing.Size(75, 23);
+            this.bUpdateAdd.TabIndex = 3;
+            this.bUpdateAdd.Text = "Добавить";
+            this.bUpdateAdd.UseVisualStyleBackColor = true;
+            this.bUpdateAdd.Click += new System.EventHandler(this.bUpdateAdd_Click);
+            // 
+            // flowUpdatePanel
+            // 
+            this.flowUpdatePanel.AutoScroll = true;
+            this.flowUpdatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowUpdatePanel.Location = new System.Drawing.Point(121, 220);
+            this.flowUpdatePanel.Name = "flowUpdatePanel";
+            this.flowUpdatePanel.Size = new System.Drawing.Size(685, 162);
+            this.flowUpdatePanel.TabIndex = 2;
+            // 
+            // lTitleUpdate
+            // 
+            this.lTitleUpdate.AutoSize = true;
+            this.lTitleUpdate.Font = new System.Drawing.Font("Segoe UI Light", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lTitleUpdate.Location = new System.Drawing.Point(346, 52);
+            this.lTitleUpdate.Name = "lTitleUpdate";
+            this.lTitleUpdate.Size = new System.Drawing.Size(229, 54);
+            this.lTitleUpdate.TabIndex = 1;
+            this.lTitleUpdate.Text = "Расписание";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -641,18 +908,19 @@
             this.Controls.Add(this.pQuarantine);
             this.Controls.Add(this.pMonitoring);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1340, 600);
             this.MinimumSize = new System.Drawing.Size(940, 600);
             this.Name = "Form1";
             this.Text = "NW Antivirus";
             this.TransparencyKey = System.Drawing.Color.LightPink;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.pSearch.ResumeLayout(false);
             this.pSearch.PerformLayout();
+            this.pProgressScan.ResumeLayout(false);
             this.pMonitoring.ResumeLayout(false);
             this.pMonitoring.PerformLayout();
             this.pEditAddMon.ResumeLayout(false);
@@ -661,19 +929,15 @@
             this.pQuarantine.PerformLayout();
             this.pReport.ResumeLayout(false);
             this.pReport.PerformLayout();
+            this.pUpdate.ResumeLayout(false);
+            this.pUpdate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmUpdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ncUpdate)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnMonitoring;
@@ -713,6 +977,33 @@
         private System.Windows.Forms.Label lQTitleDate;
         private System.Windows.Forms.Button bQRecavery;
         private System.Windows.Forms.Button bQRemove;
+        private System.Windows.Forms.Label lDropSearch;
+        private System.Windows.Forms.RadioButton rdSearch;
+        private System.Windows.Forms.RadioButton rqSearch;
+        private System.Windows.Forms.Label lSearch;
+        private System.Windows.Forms.TextBox tSearchPath;
+        private System.Windows.Forms.Button bOpenFolder;
+        private System.Windows.Forms.Panel pProgressScan;
+        private System.Windows.Forms.ProgressBar progressScan;
+        private System.Windows.Forms.Button bScanStart;
+        private System.Windows.Forms.Label lTitleScan;
+        private System.Windows.Forms.Button bScanStop;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lFlatTitlePath;
+        private System.Windows.Forms.Label lFlatTitleTime;
+        private System.Windows.Forms.Button bUpdateOpenDialog;
+        private System.Windows.Forms.Label lTitlePath;
+        private System.Windows.Forms.Label lTitleTime;
+        private System.Windows.Forms.NumericUpDown nmUpdate;
+        private System.Windows.Forms.NumericUpDown ncUpdate;
+        private System.Windows.Forms.RadioButton rdUpdate;
+        private System.Windows.Forms.RadioButton rqUpdate;
+        private System.Windows.Forms.TextBox tUpdate;
+        private System.Windows.Forms.Button bUpdateDelete;
+        private System.Windows.Forms.Button bUpdateAdd;
+        private System.Windows.Forms.FlowLayoutPanel flowUpdatePanel;
+        private System.Windows.Forms.Label lTitleUpdate;
+        private System.Windows.Forms.FlowLayoutPanel flowFilePanel;
     }
 }
 

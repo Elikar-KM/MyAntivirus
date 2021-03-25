@@ -1,0 +1,54 @@
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.exe.config
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.exe
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.pdb
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.core.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Memory.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Numerics.Vectors.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Buffers.dll
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.pdb
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.dll.config
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Memory.xml
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Numerics.Vectors.xml
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\bin\Debug\System.Buffers.xml
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csprojAssemblyReference.cache
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.AntiServiceInstaller.resources
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.GenerateResource.cache
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.CoreCompileInputs.cache
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.CopyComplete
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.exe
+D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.exe.config
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.exe
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntivirusService.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.core.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Memory.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Numerics.Vectors.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Buffers.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\AntiLib.dll.config
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Memory.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Numerics.Vectors.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\System.Buffers.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.AntiServiceInstaller.resources
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.GenerateResource.cache
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.CoreCompileInputs.cache
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csproj.CopyComplete
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.exe
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.nativelibrary.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csprojAssemblyReference.cache

@@ -1,7 +1,0 @@
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\obj\Debug\ConsoleTest.csprojAssemblyReference.cache
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\obj\Debug\ConsoleTest.csproj.CoreCompileInputs.cache
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\bin\Debug\ConsoleTest.exe.config
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\bin\Debug\ConsoleTest.exe
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\bin\Debug\ConsoleTest.pdb
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\obj\Debug\ConsoleTest.exe
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ConsoleTest\obj\Debug\ConsoleTest.pdb

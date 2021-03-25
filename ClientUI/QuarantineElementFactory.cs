@@ -80,5 +80,38 @@ namespace ClientUI
 
             count++;
         }
+
+        static public List<string> RemoveElement(FlowLayoutPanel mainPanel)
+        {
+            var list = new List<string>();
+            for (int i = checkBoxes.Count - 1; i >= 0; i--)
+            {
+                if (checkBoxes[i].Checked)
+                {
+                    list.Add(textBoxes[i].Text);
+                    mainPanel.Controls.Remove(panels[i]);
+                    panels.RemoveAt(i);
+                    checkBoxes.RemoveAt(i);
+                    textBoxes.RemoveAt(i);
+                }
+            }
+            mainPanel.Update();
+            return list;
+        }
+
+        static public List<string> RemoveAllElement(FlowLayoutPanel mainPanel)
+        {
+            var list = new List<string>();
+            for (int i = checkBoxes.Count - 1; i >= 0; i--)
+            {
+                    list.Add(textBoxes[i].Text);
+                    mainPanel.Controls.Remove(panels[i]);
+                    panels.RemoveAt(i);
+                    checkBoxes.RemoveAt(i);
+                    textBoxes.RemoveAt(i);
+            }
+            mainPanel.Update();
+            return list;
+        }
     }
 }

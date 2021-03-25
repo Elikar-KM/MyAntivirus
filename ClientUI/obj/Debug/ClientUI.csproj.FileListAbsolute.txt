@@ -1,7 +1,6 @@
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.exe.config
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.exe
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.pdb
-D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csprojAssemblyReference.cache
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.Form1.resources
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.Properties.Resources.resources
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.GenerateResource.cache
@@ -26,3 +25,30 @@ D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bi
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bin\Debug\System.Numerics.Vectors.xml
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Учеба\3 курс 2 семестр\ЗИВПО\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.CopyComplete
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.exe.config
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.exe
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\ClientUI.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\Microsoft.Data.Sqlite.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\SQLitePCLRaw.core.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\SQLitePCLRaw.nativelibrary.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Buffers.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Memory.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Numerics.Vectors.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Buffers.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Memory.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Numerics.Vectors.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.Form1.resources
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.Properties.Resources.resources
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.GenerateResource.cache
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.CoreCompileInputs.cache
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.CopyComplete
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.exe
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.pdb
