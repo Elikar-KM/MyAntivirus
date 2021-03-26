@@ -6,10 +6,12 @@ namespace AntiLib
 {
     public class MCF : IMCF
     {
-        public void CreateObserver(string path, DateValue.Operation oper)
+        public bool CreateObserver(string path, DateValue.Operation oper)
         {
+            if (DBManager.IsObserver(path) == "") return false;
             DateValue.listObserver.Add(new FileObserver(path, oper));
             DBManager.AddObserver(path, oper);
+            return true;
         }
         static void Main(string[] args)
         {
@@ -136,9 +138,15 @@ namespace AntiLib
             DBManager.DeleteTime(time, path);
         }
 
-        public void AddTime(string time, string path, DateValue.Operation oper)
+        public bool AddTime(string time, string path, DateValue.Operation oper)
         {
+            foreach (var elem in DBManager.IsTime(time))
+            {
+                var aTime = elem.Split('|');
+                if (aTime[1] == path) return false;
+            }
             DBManager.AddTime(time, path, oper);
+            return true;
         }
 
         public string[] GetReport()

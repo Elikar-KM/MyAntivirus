@@ -20,7 +20,7 @@ namespace AntiLib
         [OperationContract]
         void DestroyObserver(string path);
         [OperationContract]
-        void CreateObserver(string path,DateValue.Operation oper);
+        bool CreateObserver(string path,DateValue.Operation oper);
         //Операции
         [OperationContract]
         void MoveBackQuarantine(string path);
@@ -40,7 +40,7 @@ namespace AntiLib
         [OperationContract]
         void DeleteTime(string time,string path);
         [OperationContract]
-        void AddTime(string time, string path, DateValue.Operation oper);
+        bool AddTime(string time, string path, DateValue.Operation oper);
         [OperationContract]
         string[] GetReport();
         [OperationContract]

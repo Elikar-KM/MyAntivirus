@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using System.Threading;
-
 
 namespace AntiLib
 {
     static class DBManager
     {
-        static SqliteConnection connection;
-        private static Mutex mut = new Mutex();
         private static string source = @"D:\AntiDB.db";
 
         static DBManager()
@@ -79,6 +75,25 @@ namespace AntiLib
             command.ExecuteScalar();
             connection.Close();
         }
+        static public string IsObserver(string path)
+        {
+            string res = "";
+
+            var connection = new SqliteConnection("Data Source=" + source);
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"SELECT * FROM observer WHERE path='{path}';";
+            using (var reader = command.ExecuteReader())
+            {
+                for (int i = 0; reader.Read(); i++)
+                {
+                    res = reader.GetString(1) + '|' + reader.GetString(2);
+                }
+
+            }
+            connection.Close();
+            return res;
+        }
 
         static public string[] GetQuarantine()
         {
@@ -87,14 +102,14 @@ namespace AntiLib
             int count = 0;
 
             var command = connection.CreateCommand();
-            command.CommandText = @"SELECT count(id) FROM quarantine";
+            command.CommandText = @"select count(id) from (select * from quarantine GROUP BY file);";
             using (var reader = command.ExecuteReader())
             {
                 reader.Read();
                 count = Convert.ToInt32(reader.GetString(0));
             }
 
-            command.CommandText = @"SELECT * FROM quarantine";
+            command.CommandText = @"select * from (select * from quarantine ORDER BY ID DESC) GROUP BY file;";
 
             string[] arr = new string[count];
 
@@ -129,7 +144,7 @@ namespace AntiLib
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = $"DELETE FROM quarantine WHERE file='{path}'";
-            command.ExecuteScalar();
+            command.ExecuteNonQuery();
             connection.Close();
         }
 
@@ -230,24 +245,35 @@ namespace AntiLib
             connection.Close();
         }
 
-        static public string IsTime(string time)
+        static public string[] IsTime(string time)
         {
-            string res = "";
-
             var connection = new SqliteConnection("Data Source=" + source);
             connection.Open();
+            int count = 0;
+
             var command = connection.CreateCommand();
+            command.CommandText = $"SELECT count(id) FROM time WHERE time.time='{time}';";
+            using (var reader = command.ExecuteReader())
+            {
+                reader.Read();
+                count = Convert.ToInt32(reader.GetString(0));
+            }
+
             command.CommandText = $"SELECT * FROM time WHERE time.time='{time}';";
+
+            string[] arr = new string[count];
+
+
             using (var reader = command.ExecuteReader())
             {
                 for (int i = 0; reader.Read(); i++)
                 {
-                    res = reader.GetString(1) + '|' + reader.GetString(2) + '|' + reader.GetString(3);
+                    arr[i] = reader.GetString(1) + '|' + reader.GetString(2) + '|' + reader.GetString(3);
                 }
-
             }
+
             connection.Close();
-            return res;
+            return arr;
         }
 
         static public void DeleteTime(string time, string path)

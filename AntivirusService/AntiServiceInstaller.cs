@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration.Install;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.ServiceProcess;
 
 namespace AntivirusService
@@ -17,8 +11,8 @@ namespace AntivirusService
             serviceProcessInstaller1 = new ServiceProcessInstaller();
             serviceProcessInstaller1.Account = ServiceAccount.LocalSystem;
             serviceInstaller1 = new ServiceInstaller();
-            serviceInstaller1.ServiceName = "WindowsServiceHostForMyService";
-            serviceInstaller1.DisplayName = "WindowsServiceHostForMyService";
+            serviceInstaller1.ServiceName = "NWAntivirusService";
+            serviceInstaller1.DisplayName = "NWAntivirusService";
             serviceInstaller1.Description = "WCF Service Hosted by Windows NT Service";
             serviceInstaller1.StartType = ServiceStartMode.Automatic;
             Installers.Add(serviceProcessInstaller1);

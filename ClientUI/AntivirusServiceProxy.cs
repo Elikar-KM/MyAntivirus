@@ -75,10 +75,10 @@
         System.Threading.Tasks.Task DestroyObserverAsync(string path);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/CreateObserver", ReplyAction = "http://tempuri.org/IMCF/CreateObserverResponse")]
-        void CreateObserver(string path, AntiLib.DateValueOperation oper);
+        bool CreateObserver(string path, AntiLib.DateValueOperation oper);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/CreateObserver", ReplyAction = "http://tempuri.org/IMCF/CreateObserverResponse")]
-        System.Threading.Tasks.Task CreateObserverAsync(string path, AntiLib.DateValueOperation oper);
+        System.Threading.Tasks.Task<bool> CreateObserverAsync(string path, AntiLib.DateValueOperation oper);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/MoveBackQuarantine", ReplyAction = "http://tempuri.org/IMCF/MoveBackQuarantineResponse")]
         void MoveBackQuarantine(string path);
@@ -129,10 +129,10 @@
         System.Threading.Tasks.Task DeleteTimeAsync(string time, string path);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/AddTime", ReplyAction = "http://tempuri.org/IMCF/AddTimeResponse")]
-        void AddTime(string time, string path, AntiLib.DateValueOperation oper);
+        bool AddTime(string time, string path, AntiLib.DateValueOperation oper);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/AddTime", ReplyAction = "http://tempuri.org/IMCF/AddTimeResponse")]
-        System.Threading.Tasks.Task AddTimeAsync(string time, string path, AntiLib.DateValueOperation oper);
+        System.Threading.Tasks.Task<bool> AddTimeAsync(string time, string path, AntiLib.DateValueOperation oper);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMCF/GetReport", ReplyAction = "http://tempuri.org/IMCF/GetReportResponse")]
         string[] GetReport();
@@ -241,12 +241,12 @@
             return base.Channel.DestroyObserverAsync(path);
         }
 
-        public void CreateObserver(string path, AntiLib.DateValueOperation oper)
+        public bool CreateObserver(string path, AntiLib.DateValueOperation oper)
         {
-            base.Channel.CreateObserver(path, oper);
+            return base.Channel.CreateObserver(path, oper);
         }
 
-        public System.Threading.Tasks.Task CreateObserverAsync(string path, AntiLib.DateValueOperation oper)
+        public System.Threading.Tasks.Task<bool> CreateObserverAsync(string path, AntiLib.DateValueOperation oper)
         {
             return base.Channel.CreateObserverAsync(path, oper);
         }
@@ -331,12 +331,12 @@
             return base.Channel.DeleteTimeAsync(time, path);
         }
 
-        public void AddTime(string time, string path, AntiLib.DateValueOperation oper)
+        public bool AddTime(string time, string path, AntiLib.DateValueOperation oper)
         {
-            base.Channel.AddTime(time, path, oper);
+            return base.Channel.AddTime(time, path, oper);
         }
 
-        public System.Threading.Tasks.Task AddTimeAsync(string time, string path, AntiLib.DateValueOperation oper)
+        public System.Threading.Tasks.Task<bool> AddTimeAsync(string time, string path, AntiLib.DateValueOperation oper)
         {
             return base.Channel.AddTimeAsync(time, path, oper);
         }
@@ -361,6 +361,7 @@
             return base.Channel.GetFileAsync(idReport);
         }
     }
+
 
 
 

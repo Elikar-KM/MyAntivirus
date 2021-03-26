@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClientUI
@@ -31,14 +27,14 @@ namespace ClientUI
             pFile.Controls.Add(tFile);
             pFile.Location = new System.Drawing.Point(3, 3);
             pFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pFile.Name = "pFile";
+            pFile.Name = "pFile_"+ count;
             pFile.Size = new System.Drawing.Size(828, 36);
             pFile.TabIndex = 0;
             // 
             // tFile
             // 
             tFile.Location = new System.Drawing.Point(48, 8);
-            tFile.Name = "tFile";
+            tFile.Name = "tFile_" + count;
             tFile.ReadOnly = true;
             tFile.Size = new System.Drawing.Size(419, 20);
             tFile.TabIndex = 0;
@@ -48,7 +44,7 @@ namespace ClientUI
             // 
             lFileOperation.AutoSize = true;
             lFileOperation.Location = new System.Drawing.Point(480, 11);
-            lFileOperation.Name = "lFileOperation";
+            lFileOperation.Name = "lFileOperation_" + count;
             lFileOperation.Size = new System.Drawing.Size(115, 13);
             lFileOperation.TabIndex = 1;
             lFileOperation.Text = oper;
@@ -57,7 +53,7 @@ namespace ClientUI
             // 
             lFileType.AutoSize = true;
             lFileType.Location = new System.Drawing.Point(613, 11);
-            lFileType.Name = "lFileType";
+            lFileType.Name = "lFileType_" + count;
             lFileType.Size = new System.Drawing.Size(35, 13);
             lFileType.TabIndex = 2;
             lFileType.Text = type;
@@ -67,7 +63,7 @@ namespace ClientUI
             lFileTitle.AutoSize = true;
             lFileTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             lFileTitle.Location = new System.Drawing.Point(4, 10);
-            lFileTitle.Name = "lFileTitle";
+            lFileTitle.Name = "lFileTitle_" + count;
             lFileTitle.Size = new System.Drawing.Size(38, 15);
             lFileTitle.TabIndex = 3;
             lFileTitle.Text = "Путь:";

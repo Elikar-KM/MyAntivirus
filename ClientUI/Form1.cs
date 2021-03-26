@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
-using System.IO.Pipes;
 using System.IO;
-using System.Security.Principal;
 using ServiceReference1;
 using System.ServiceModel;
 using ServiceReference1.AntiLib;
@@ -16,7 +12,6 @@ namespace ClientUI
     
     public partial class Form1 : Form
     {
-        private List<string> sendList = new List<string>();
         private List<Panel> allPanels;
         public static MCFClient client = null;
         public Form1()
@@ -179,6 +174,7 @@ namespace ClientUI
         {
             if (!File.Exists(tEditAddMon.Text) && Directory.Exists(tEditAddMon.Text))
             {
+
                 int rb = 0;
                 if (rdEditAddMon.Checked) rb = 1;
                 var str = MonitoringElementFactory.EditElement(flowPanelMonitoring, tEditAddMon.Text, rb);
@@ -190,7 +186,7 @@ namespace ClientUI
                 }
                 else
                 {
-                    client.CreateObserver(arrStr[0], (DateValueOperation)int.Parse(arrStr[1]));
+                    if (!client.CreateObserver(arrStr[0], (DateValueOperation)int.Parse(arrStr[1]))) return;
                 }
 
                 pEditAddMon.Visible = false;
@@ -268,10 +264,13 @@ namespace ClientUI
 
         private void bUpdateAdd_Click(object sender, EventArgs e)
         {
-            int rb = 0;
-            if (rdUpdate.Checked) rb = 1;
-            UpdateElementFactory.AddElement(flowUpdatePanel, ncUpdate.Value+":"+nmUpdate.Value, tUpdate.Text,rb);
-            client.AddTime(ncUpdate.Value + ":" + nmUpdate.Value, tUpdate.Text, (DateValueOperation)rb);
+            if (!File.Exists(tUpdate.Text) && Directory.Exists(tUpdate.Text))
+            {
+                int rb = 0;
+                if (rdUpdate.Checked) rb = 1;
+                if (client.AddTime(ncUpdate.Value + ":" + nmUpdate.Value.ToString("00"), tUpdate.Text, (DateValueOperation)rb))
+                    UpdateElementFactory.AddElement(flowUpdatePanel, ncUpdate.Value + ":" + nmUpdate.Value.ToString("00"), tUpdate.Text, rb);
+            }
         }
 
         private void bUpdateDelete_Click(object sender, EventArgs e)
