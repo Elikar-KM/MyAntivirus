@@ -52,3 +52,4 @@ D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.CoreCo
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csproj.CopyComplete
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.exe
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.pdb
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ClientUI\obj\Debug\ClientUI.csprojAssemblyReference.cache

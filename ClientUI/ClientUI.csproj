@@ -79,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AntivirusServiceProxy.cs" />
-    <Compile Include="DBwork.cs" />
     <Compile Include="FileElementFactory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
