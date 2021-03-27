@@ -11,10 +11,11 @@ namespace ConsoleTestLib
     {
         static void Main(string[] args)
         {
-
-            var mcf = new AntiLib.MCF();
+            Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\NWAntivirus\AntiDB.db");
+            Console.WriteLine(@"C:\Users\MyPC\AppData\Local\NWAntivirus\AntiDB.db");
+            //var mcf = new AntiLib.MCF();
             //mcf.StartScaning(@"D:\tasm\test", 0);
-            mcf.AddTime("12:12", "sadasd", (AntiLib.DateValue.Operation)1);
+            //mcf.AddTime("12:12", "sadasd", (AntiLib.DateValue.Operation)1);
             //mcf.MoveBackQuarantine(@"D:\tasm\test\Zoom.exe");
             //var a=AntiLib.DateValue.isScaning;
             //mcf.CreateObserver("D:\\tasm\\test", AntiLib.DateValue.Operation.Quarantine);

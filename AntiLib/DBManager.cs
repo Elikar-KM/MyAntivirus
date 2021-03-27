@@ -6,7 +6,9 @@ namespace AntiLib
 {
     static class DBManager
     {
-        private static string source = @"D:\AntiDB.db";
+        //private static string source = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\NWAntivirus\AntiDB.db";
+        private static string source = @"C:\NWAntivirus\AntiDB.db";
+        //private static string source;
 
         static DBManager()
         {
@@ -14,6 +16,7 @@ namespace AntiLib
         }
         static private void Connect(string source)
         {
+            //source = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\NWAntivirus\AntiDB.db";
             //connection = new SqliteConnection("Data Source=" + source);
         }
 
