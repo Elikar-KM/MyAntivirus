@@ -45,7 +45,42 @@ namespace AntiLib
 
                 //Console.WriteLine("thread: "+i);
                 if (!DateValue.isScaning && scan.Equals(DateValue.Scan.SearchFile)) return;
-                string searchSign = GetStringOfBytes(text, i, 4);
+
+                var temp = new byte[4];
+                Array.Copy(text, i, temp, 0, 4);
+                if (DateValue.signTree.isValue(temp))
+                {
+                    string searchSign = GetStringOfBytes(temp, 0, 4);
+                    
+                    List<string> signaturs = DBManager.SearchSignature(searchSign, i);
+                    foreach (var sign in signaturs)
+                    {
+
+                        if (CheckSignatureFullMatch(sign, text, i))
+                        {
+
+                            if (oper.Equals(DateValue.Operation.Quarantine))
+                            {
+                                QuarantineFile(path);
+                                DBManager.AddQuarantine(DateTime.Now.ToString("MM/dd/yyyy H:mm"), path, DBManager.GetTypeSignature(sign));
+                            }
+                            else DeleteFile(path);
+
+
+                            if (scan.Equals(DateValue.Scan.SearchFile))
+                            {
+                                DateValue.countVirusFile++;
+                                DBManager.AddFile(DateValue.idReport, path, oper, DBManager.GetTypeSignature(sign));
+                            }
+                            Console.WriteLine("GOOOOOD");
+                            isFound = true;
+                            break;
+                        }
+                    }
+                }
+
+                //string searchSign = GetStringOfBytes(text, i, 4);
+                /*
                 List<string> signaturs = DBManager.SearchSignature(searchSign, i);
                 foreach (var sign in signaturs)
                 {
@@ -70,7 +105,7 @@ namespace AntiLib
                         isFound = true;
                         break;
                     }
-                }
+                }*/
             }
 
             if (scan.Equals(DateValue.Scan.SearchFile))

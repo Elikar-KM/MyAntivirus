@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace AntiLib
 {
@@ -114,6 +115,17 @@ namespace AntiLib
 
         public void ReloadObserver()
         {
+            //NTree
+            var list = new List<byte[]>();
+            foreach (var elem in DBManager.GetSignature4byte())
+            {
+                list.Add(BitConverter.GetBytes(Convert.ToInt32(elem, 16)));
+            }
+
+            DateValue.signTree = new AntiLib.NTree(list);
+
+            //Observer
+
             foreach (var obs in DateValue.listObserver)
             {
                 obs.Destroy();
@@ -126,11 +138,7 @@ namespace AntiLib
                 Console.WriteLine(strObs[0]);
                 DateValue.listObserver.Add(new FileObserver(strObs[0], (DateValue.Operation)int.Parse(strObs[1])));
             }
-
-
-            //NTree
-
-
+ 
         }
 
         public string[] GetTime()

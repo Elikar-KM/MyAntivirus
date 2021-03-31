@@ -19,7 +19,7 @@ namespace AntiLib
         public static List<FileObserver> listObserver = new List<FileObserver>();
         public static System.Timers.Timer aTimer;
         private static List<string> lTime = new List<string>();
-        public static NTree<byte[]> signTree;
+        public static NTree signTree;
 
 
         public static void StartTimer()

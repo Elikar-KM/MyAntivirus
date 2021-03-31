@@ -160,6 +160,29 @@ namespace AntiLib
             command.ExecuteScalar();
             connection.Close();
         }
+        static public List<string> GetSignature4byte()
+        {
+            var connection = new SqliteConnection("Data Source=" + source);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+
+            command.CommandText = @"select * from signature;";
+
+            List<string> arr = new List<string>();
+
+
+            using (var reader = command.ExecuteReader())
+            {
+                for (int i = 0; reader.Read(); i++)
+                {
+                    arr.Add(reader.GetString(1).Substring(0,8));
+                }
+            }
+
+            connection.Close();
+            return arr;
+        }
         static public void DeleteSignature(string sign)
         {
             var connection = new SqliteConnection("Data Source=" + source);
