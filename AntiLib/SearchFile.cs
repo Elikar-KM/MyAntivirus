@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System;
+using Ionic.Zip;
 
 namespace AntiLib
 {
@@ -49,6 +50,8 @@ namespace AntiLib
                         ScanFile.AddTask(new ScanObject(pathFile, oper, DateValue.Scan.SearchFile));
                         break;
                     case 2: //zip
+                        Console.WriteLine(pathFile);
+                        OpenZip(pathFile,oper);
                         break;
                 }
             }
@@ -68,7 +71,7 @@ namespace AntiLib
         {
             try
             {
-                var file = new FileStream(path, FileMode.Open, FileAccess.Read,FileShare.ReadWrite);
+                var file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 int temp = file.ReadByte();
                 byte flag = 0;
                 switch (temp)
@@ -87,6 +90,99 @@ namespace AntiLib
             {
                 return 0;
             }
+        }
+
+        public static byte GetTypeFile(MemoryStream file)
+        {
+            try
+            {
+                //var file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                int temp = file.ReadByte();
+                byte flag = 0;
+                switch (temp)
+                {
+                    case 77: //M  exe
+                        if (file.ReadByte() == 90) flag = 1; //Z
+                        break;
+                    case 80: //P  zip
+                        if (file.ReadByte() == 75) flag = 2; //K
+                        break;
+                }
+                //file.Close();
+                return flag;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+        public static void OpenZip(string zipPath, DateValue.Operation oper)
+        {
+            using (ZipFile zip = ZipFile.Read(zipPath))
+            {
+                foreach (var entry in zip.Entries)
+                {
+                    using (var reader = entry.ExtractToMemoryStream())
+                    {
+                        byte flag = GetTypeFile(reader);
+                        Console.WriteLine("zip flag" + flag.ToString());
+                        switch (flag)
+                        {
+                            case 0: //other file
+                                Console.WriteLine("zip"+entry.FileName);
+                                break;
+                            case 1: //exe
+                                DateValue.countFile++;
+                                Console.WriteLine("zip" + entry.FileName);
+                                reader.Position = 0;
+                                ScanFile.AddTask(new ScanObject(reader,zipPath+'\\'+entry.FileName, oper, DateValue.Scan.SearchFile));
+                                break;
+                            case 2: //zip
+                                OpenZipZip(entry, oper, zipPath + '\\' + entry.FileName);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void OpenZipZip(ZipEntry zipEntry, DateValue.Operation oper, string path)
+        {
+            using (ZipFile zip = ZipFile.Read(zipEntry.ExtractToMemoryStream()))
+            {
+                foreach (var entry in zip.Entries)
+                {
+                    using (var reader = entry.ExtractToMemoryStream())
+                    {
+                        byte flag = GetTypeFile(reader);
+                        switch (flag)
+                        {
+                            case 0: //other file
+                                break;
+                            case 1: //exe
+                                DateValue.countFile++;
+                                Console.WriteLine(entry.FileName);
+                                reader.Position = 0;
+                                ScanFile.AddTask(new ScanObject(reader, path + '\\' + entry.FileName, oper, DateValue.Scan.SearchFile));
+                                break;
+                            case 2: //zip
+                                OpenZipZip(entry, oper, path+'\\'+ entry.FileName);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    static class IonicExtensions
+    {
+        public static MemoryStream ExtractToMemoryStream(this ZipEntry zipEntry)
+        {
+            var mstream = new MemoryStream();
+            zipEntry.Extract(mstream);
+            mstream.Position = 0;
+            return mstream;
         }
     }
 }

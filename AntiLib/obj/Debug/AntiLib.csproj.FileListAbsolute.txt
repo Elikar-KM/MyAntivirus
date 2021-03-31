@@ -46,3 +46,4 @@ D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntiLib\bin\Debug\System.Memory.xml
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntiLib\bin\Debug\System.Numerics.Vectors.xml
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntiLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntiLib\obj\Debug\AntiLib.csproj.CopyComplete
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntiLib\bin\Debug\Ionic.Zip.dll

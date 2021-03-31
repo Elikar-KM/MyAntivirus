@@ -48,10 +48,62 @@ namespace AntiLib
 
             byte[] array = new byte[4];
             file.Read(array, 0, 4);
+            Console.WriteLine(BitConverter.ToString(array));
             Array.Reverse(array, 0, array.Length);
             int rawDataSize = BitConverter.ToInt32(array, 0);
 
             file.Read(array, 0, 4);
+            Console.WriteLine(BitConverter.ToString(array));
+            Array.Reverse(array, 0, array.Length);
+            int rawDataPosition = BitConverter.ToInt32(array, 0);
+
+            text = new byte[rawDataSize];
+            file.Position = rawDataPosition;
+            file.Read(text, 0, rawDataSize - 1);
+            Console.WriteLine("create object");
+
+            file.Close();
+        }
+
+        public ScanObject(MemoryStream file, string path, DateValue.Operation oper, DateValue.Scan scan)
+        {
+            this.path = path;
+            this.oper = oper;
+            this.scan = scan;
+
+            //FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            bool txtIsFound = false;
+            while (!txtIsFound)
+            {
+                int readByte = file.ReadByte();
+                switch ((char)readByte)
+                {
+                    case '.': //.text
+                        if ((char)file.ReadByte() == 't' &&
+                            (char)file.ReadByte() == 'e' &&
+                            (char)file.ReadByte() == 'x' &&
+                            (char)file.ReadByte() == 't') txtIsFound = true;
+                        break;
+                    default:
+                        break;
+                }
+                if (readByte == -1)
+                {
+                    file.Close();
+                    return;
+                }
+            }
+
+            file.Position += 10;
+
+            byte[] array = new byte[4];
+            file.Read(array, 0, 4);
+            Console.WriteLine(BitConverter.ToString(array));
+            Array.Reverse(array, 0, array.Length);
+            int rawDataSize = BitConverter.ToInt32(array, 0);
+
+            file.Read(array, 0, 4);
+            Console.WriteLine(BitConverter.ToString(array));
             Array.Reverse(array, 0, array.Length);
             int rawDataPosition = BitConverter.ToInt32(array, 0);
 

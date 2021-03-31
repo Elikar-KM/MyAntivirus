@@ -43,7 +43,7 @@ namespace AntiLib
             for (int i = 0; i < text.Length - 4 && !isFound; i++)
             {
 
-                Console.WriteLine("thread: "+i);
+                //Console.WriteLine("thread: "+i);
                 if (!DateValue.isScaning && scan.Equals(DateValue.Scan.SearchFile)) return;
                 string searchSign = GetStringOfBytes(text, i, 4);
                 List<string> signaturs = DBManager.SearchSignature(searchSign, i);
@@ -99,16 +99,20 @@ namespace AntiLib
 
         private static void DeleteFile(string path)
         {
-            File.Delete(path);
+            if(File.Exists(path))
+                File.Delete(path);
         }
 
         private static void QuarantineFile(string path)
         {
-            using (var stream = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
+            if (File.Exists(path))
             {
-                stream.Position = 0;
-                stream.WriteByte(0x51);
-                stream.Close();
+                using (var stream = File.Open(path, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
+                {
+                    stream.Position = 0;
+                    stream.WriteByte(0x51);
+                    stream.Close();
+                }
             }
         }
     }

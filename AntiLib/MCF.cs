@@ -126,6 +126,11 @@ namespace AntiLib
                 Console.WriteLine(strObs[0]);
                 DateValue.listObserver.Add(new FileObserver(strObs[0], (DateValue.Operation)int.Parse(strObs[1])));
             }
+
+
+            //NTree
+
+
         }
 
         public string[] GetTime()
