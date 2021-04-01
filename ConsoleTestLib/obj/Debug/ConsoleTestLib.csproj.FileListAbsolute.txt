@@ -54,3 +54,4 @@ D:\Education\3.2\ZIVPO\Git\MyAntivirus\ConsoleTestLib\obj\Debug\ConsoleTestLib.c
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ConsoleTestLib\obj\Debug\ConsoleTestLib.exe
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ConsoleTestLib\obj\Debug\ConsoleTestLib.pdb
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\ConsoleTestLib\bin\Debug\Ionic.Zip.dll
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\ConsoleTestLib\obj\Debug\ConsoleTestLib.csprojAssemblyReference.cache

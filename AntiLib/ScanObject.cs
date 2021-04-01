@@ -49,15 +49,15 @@ namespace AntiLib
             byte[] array = new byte[4];
             file.Read(array, 0, 4);
             Console.WriteLine(BitConverter.ToString(array));
-            Array.Reverse(array, 0, array.Length);
+            //Array.Reverse(array, 0, array.Length);
             int rawDataSize = BitConverter.ToInt32(array, 0);
-            Console.WriteLine(path + " pe size :" + rawDataSize + " " + BitConverter.ToString(array, 0, 4));
+            Console.WriteLine(path + " pe size :" + rawDataSize + " " + BitConverter.ToString(array));
 
             file.Read(array, 0, 4);
             Console.WriteLine(BitConverter.ToString(array));
-            Array.Reverse(array, 0, array.Length);
+            //Array.Reverse(array, 0, array.Length);
             int rawDataPosition = BitConverter.ToInt32(array, 0);
-            Console.WriteLine(path + " pe pos  :" + rawDataPosition + " " + BitConverter.ToString(array, 0, 4));
+            Console.WriteLine(path + " pe pos  :" + rawDataPosition + " " + BitConverter.ToString(array));
 
             text = new byte[rawDataSize];
             file.Position = rawDataPosition;
@@ -101,12 +101,12 @@ namespace AntiLib
             byte[] array = new byte[4];
             file.Read(array, 0, 4);
             Console.WriteLine(BitConverter.ToString(array));
-            Array.Reverse(array, 0, array.Length);
+            //Array.Reverse(array, 0, array.Length);
             int rawDataSize = BitConverter.ToInt32(array, 0);
 
             file.Read(array, 0, 4);
             Console.WriteLine(BitConverter.ToString(array));
-            Array.Reverse(array, 0, array.Length);
+            //Array.Reverse(array, 0, array.Length);
             int rawDataPosition = BitConverter.ToInt32(array, 0);
 
             text = new byte[rawDataSize];

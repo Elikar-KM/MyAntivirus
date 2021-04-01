@@ -51,4 +51,4 @@ D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\runtimes\win-a
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.batteries_v2.dll
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.nativelibrary.dll
 D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
-D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\obj\Debug\AntivirusService.csprojAssemblyReference.cache
+D:\Education\3.2\ZIVPO\Git\MyAntivirus\AntivirusService\bin\Debug\Ionic.Zip.dll

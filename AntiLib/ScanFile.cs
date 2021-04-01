@@ -62,7 +62,8 @@ namespace AntiLib
                             if (oper.Equals(DateValue.Operation.Quarantine))
                             {
                                 QuarantineFile(path);
-                                DBManager.AddQuarantine(DateTime.Now.ToString("MM/dd/yyyy H:mm"), path, DBManager.GetTypeSignature(sign));
+                                if (File.Exists(path))
+                                    DBManager.AddQuarantine(DateTime.Now.ToString("MM/dd/yyyy H:mm"), path, DBManager.GetTypeSignature(sign));
                             }
                             else DeleteFile(path);
 
